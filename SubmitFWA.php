@@ -5,7 +5,10 @@
 //else{
     //echo "<script> location.href'RequesterLogin.php'</script>";
 //}
+include('conn.php');
+session_start();
 if(isset($_REQUEST['submit'])){
+    
     if(($_REQUEST['workType'] == "") || ($_REQUEST['description'] =="") || ($_REQUEST['reason'] =="")){
         $msg = "<div>Please fill in all field</div>";
     }
@@ -14,7 +17,7 @@ if(isset($_REQUEST['submit'])){
         $des = $_REQUEST['description'];
         $res = $_REQUEST['reason'];
         $sql = "INSERT INTO fwa_rquest(workType, description, reason)VALUE('$wType','$des','$res')";
-            if($conn->$query($sql) == TRUE){
+            if($conn -> query($sql) == TRUE){
                 $msg = "<div>Request Submmited Sucessfully</div>";
             }
             else{
