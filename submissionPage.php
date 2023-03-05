@@ -1,75 +1,61 @@
 <?php
-require_once('config.php');
+session_start();
+require_once("head.php");
+include('conn.php');
+//if($_SESSION(['is_login'])){
+    //$employeeID = $_SESSION['employeeID'];
+//}
+//else{
+    //echo "<script> location.href'LoginPage.php'</script>";
+//}
+//echo "EmployeeID: ".$_GET['EmployeeID'];
+if(isset($_REQUEST['submit'])){
+    
+    if(($_REQUEST['workType'] == "") || ($_REQUEST['description'] =="") || ($_REQUEST['reason'] =="")){
+        $msg = "<div>Please fill in all field</div>";
+    }
+    else{
+        $wType = $_REQUEST['workType'];
+        $des = $_REQUEST['description'];
+        $res = $_REQUEST['reason'];
+        $sql = "INSERT INTO fwa_rquest(workType, description, reason)VALUE('$wType','$des','$res')";
+            if($conn -> query($sql) == TRUE){
+                $msg = "<div>Request Submmited Sucessfully</div>";
+            }
+            else{
+                $msg = "<div>Unable to submit your request</div>";
+            }
+    }
+}
 
 ?>
 <!DOCTYPE html>
 <html>
-    <head>
-        <title></title>
-    </head>
-
+<head>
+<link rel="stylesheet" href="style.css">
+</head>
 <body>
-
-    <div>
-        <form action="submissionPage.php" method="post">
-            <div class="container">
-                <h1>FWA Request Submission Page</h1>
-                <p>Please fill up the request</p>
-
-                <label for="employeeID"><b>Employee ID (EM***)</b></label>
-                <input type="text" name="employeeID" required>
-                </br>
-                </br>
-
-                <label for="requestID"><b>Request ID (RQ***)</b></label>
-                <input type="text" name="requestID" required>
-                </br>
-                </br>
-
-                <label for="requestDate"><b>Request Date (DD/MM/YYYY)</b></label>
-                <input type="date" name="requestDate" required>
-                </br>
-                </br>
-                <label for="workType"><b>Work Type</b></label>
-                <select id="workType" name="workType">
+    <div class="container">
+        <h1>Submit FWA REQUEST</h1>
+        <div class="center">
+        <form action ="submissionPage.php" method = "POST">
+            <label for="workType">Work Type: </label>
+            <select id="workType" name="workType">
                 <option value="Flexi-hour">Flexi-hour</option>
                 <option value="Work-from-home">Work-from-home</option>
                 <option value="Hybrid">Hybrid</option>
-                </select>
-                </br>
-                </br>
-
-                <label for="description"><b>Description</b></label>
-                <input type="text" name="description" required>
-                </br>
-                </br>
-                <label for="reason"><b>Reason</b></label>
-                <input type="text" name="reason" required>
-                </br>
-                </br>
-                <input type="submit" name="create" value="Submit">
-            </div>
-            <?php
-            if (isset($_POST['create'])){
-
-                $requestID = $_POST['requestID'];
-                $requestDate = $_POST['requestDate'];
-                $workType = $_POST['workType'];
-                $description = $_POST['description'];
-                $reason = $_POST['reason'];
-                $status = "Pending";
-                $comment = NULL;
-                $employeeID = $_POST['employeeID'];
-            
-                $sql = "INSERT INTO fwa_rquest(requestID, requestDate, workType, description, reason, status, comment, employeeID) VALUES($requestID, $requestDate, $workType, $description, $reason, $status, $comment, $employeeID)";
-                mysqli_query($conn,$sql);
-                
-                header("location:submissionCompletionPage.php");
-            }
-            ?>
+            </select><br>
+            <label for="description">Description:</label>
+                <textarea type="text" name="description" placeholder="Write your description here" rows="4" cols="50" required></textarea><br>
+            <label>Reason:</label>
+                <textarea type="text" name="reason" placeholder="Write your reason here" rows="4" cols="50" required></textarea><br>
+            <div class="button-group">  
+                <input type="submit" name="submit" value = "Submit"> 
+                <input type="submit" formaction="http://localhost/mine_assigment/employeeHome.php" value="cancel">
+            </div>  
         </form>
-
+        </div>
     </div>
-
 </body>
 </html>
+
