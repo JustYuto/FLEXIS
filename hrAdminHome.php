@@ -1,6 +1,6 @@
 <?php
-        if (isset($_POST['review'])){
-            header("location:selectEmpPage.php");
+        if (isset($_POST['record'])){
+            header("location:selectDeptPage.php");
         }
 
     ?>
@@ -13,8 +13,7 @@
 
     <body>
         <h1>Welcome to the Supervisor Page</h1>
-        <form action="supervisorHome.php" method="post">
-        <input type="submit" name="review" value="Review FWA Request">
-    </form>
+        <form action="hrAdminHome.php" method="post">
+        <input type="submit" name="record" value="Record New Employee">
 </body>
 </html>
