@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 05, 2023 at 07:26 AM
+-- Generation Time: Mar 05, 2023 at 07:40 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -63,9 +63,9 @@ CREATE TABLE `employee` (
 
 INSERT INTO `employee` (`employeeID`, `password`, `name`, `email`, `position`, `FWAStatus`, `departmentID`, `supervisorID`) VALUES
 ('EM001', 'PS001', 'ONE', 'ONEgmail.com', 'Employee', 'New', 'DP001', 'EM009'),
-('EM003', 'PS005', 'FIVE', 'FIVE@gmail.com', 'Employee', 'OLD', 'DP001', 'EM009'),
+('EM003', 'PS003', 'THREE', 'THREE@gmail.com', 'Employee', 'OLD', 'DP001', 'EM009'),
 ('EM005', 'PS002', 'TWO', 'TWO@gmail.com', 'Employee', 'New', NULL, 'EM009'),
-('EM009', 'PS003', 'THREE', 'THREE@gmail.com', 'Supervisor', 'New', 'DP001', NULL),
+('EM009', 'PS009', 'NINE', 'NINE@gmail.com', 'Supervisor', 'New', 'DP001', NULL),
 ('EM101', 'PS101', 'ONEOONE', 'ONEOONE@gmail.com', 'HR Admin', 'New', NULL, NULL);
 
 -- --------------------------------------------------------
