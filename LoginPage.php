@@ -15,13 +15,18 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 {
 	$employeeid=$_POST["EmployeeID"];
     $password=$_POST["Password"];
-
+    $FWAStatus = "new";
     $sql="select * from employee where EmployeeID='".$employeeid."' AND Password='".$password."'";
+    // Assume the user's account status is stored in a variable called $accountStatus
 
     $result=mysqli_query($conn,$sql);
     while($row=mysqli_fetch_array($result))
     {
-    if($row["position"]=="Employee")
+    if($row["FWAStatus"]=="New")
+    {
+        header("location:changePassword.php");
+    } 
+    elseif($row["position"]=="Employee")
     {
         header("location:employeeHome.php");
     }
