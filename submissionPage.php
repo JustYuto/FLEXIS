@@ -31,7 +31,11 @@ require_once('config.php');
                 </br>
                 </br>
                 <label for="workType"><b>Work Type</b></label>
-                <input type="text" name="workType" required>
+                <select id="workType" name="workType">
+                <option value="Flexi-hour">Flexi-hour</option>
+                <option value="Work-from-home">Work-from-home</option>
+                <option value="Hybrid">Hybrid</option>
+                </select>
                 </br>
                 </br>
 
