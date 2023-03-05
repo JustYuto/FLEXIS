@@ -1,6 +1,6 @@
 <?php
         if (isset($_POST['record'])){
-            header("location:selectDeptPage.php");
+            header("location:recordNewEmpPage.php");
         }
 
     ?>

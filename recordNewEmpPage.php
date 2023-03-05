@@ -14,9 +14,18 @@ include_once('config.php')
             <div class="container">
                 <h1>New Employee recording Page</h1>
                 <p>Please fill up the fields</p>
+                <label for="departmentID"><b>Department ID (DP***)</b></label>
+                <input type="text" name="departmentID" required>
+                </br>
+                </br>
 
                 <label for="employeeID"><b>Employee ID (EM***)</b></label>
                 <input type="text" name="employeeID" required>
+                </br>
+                </br>
+
+                <label for="supervisorID"><b>Supervisor ID (EM***)</b></label>
+                <input type="text" name="supervisorID" required>
                 </br>
                 </br>
 
@@ -46,15 +55,16 @@ include_once('config.php')
             </div>
             <?php
             if (isset($_POST['create'])){
-
+                $departmentID = $_POST['departmentID'];
                 $employeeID = $_POST['employeeID'];
+                $supervisorID = $_POST['supervisorID'];
                 $password = $_POST['password'];
                 $name = $_POST['name'];
                 $email = $_POST['email'];
                 $position = $_POST['position'];
                 $FWAStatus = $_POST['FWAStatus'];
             
-                $sql = "INSERT INTO fwa_rquest(employeeID, password, name, email, position, FWAStatus) VALUES($employeeID, $password, $name, $email, $position, $FWAStatus)";
+                $sql = "INSERT INTO fwa_rquest(departmentID, employeeID, supervisorID, password, name, email, position, FWAStatus) VALUES($departmentID, $employeeID, $supervisorID, $password, $name, $email, $position, $FWAStatus)";
                 mysqli_query($conn,$sql);
                 
                 header("location:recordCompletionPage.php");

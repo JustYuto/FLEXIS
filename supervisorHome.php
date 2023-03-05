@@ -1,6 +1,6 @@
 <?php
         if (isset($_POST['review'])){
-            header("location:selectEmpPage.php");
+            header("location:reviewPage.php");
         }
 
     ?>
