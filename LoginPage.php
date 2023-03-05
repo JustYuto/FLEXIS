@@ -15,13 +15,18 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 {
 	$employeeid=$_POST["EmployeeID"];
     $password=$_POST["Password"];
-
+    $FWAStatus = "new";
     $sql="select * from employee where EmployeeID='".$employeeid."' AND Password='".$password."'";
+    // Assume the user's account status is stored in a variable called $accountStatus
 
     $result=mysqli_query($conn,$sql);
     while($row=mysqli_fetch_array($result))
     {
-    if($row["position"]=="Employee")
+    if($row["FWAStatus"]=="New")
+    {
+        header("location:changePassword.php");
+    } 
+    elseif($row["position"]=="Employee")
     {
         header("location:employeeHome.php");
     }
@@ -46,26 +51,27 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 <!DOCTYPE html>
 <html>
     <head>
-        <title></title>
+        <title>Login Page</title>
+        <link rel="stylesheet" href="style.css">
     </head>
 <body>
+<div class="container">
+    <h1>WELCOME TO FLEXIWORK</h1>
+    <div class="center">
+    <form action="#" method="POST">
+        <div>
+            <label>Employee ID</label>
+            <input type="text" name="EmployeeID" required>
+        </div><br>
 
-<form action="#" method="POST">
-    <div>
-        <label>Employee ID</label>
-        <input type="text" name="EmployeeID" required>
-    </div>
-
-    <div>
-        <label>Password</label>
-        <input type="password" name="Password" required>
-    </div>
-
-    <div>
-        <input type="submit" value="Login">
-    </div>
-   
+        <div>
+            <label>Password</label>
+            <input type="password" name="Password" required>
+        </div><br>
+            <input type="submit" value="Login">
+    
     </form>
-
+    </div>
+</div>
 </body>
 </html>
