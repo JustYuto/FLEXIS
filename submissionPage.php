@@ -21,11 +21,13 @@ if(isset($_REQUEST['submit'])){
         $sql = "INSERT INTO fwa_rquest(workType, description, reason)VALUE('$wType','$des','$res')";
             if($conn -> query($sql) == TRUE){
                 $msg = "<div>Request Submmited Sucessfully</div>";
+                
             }
             else{
                 $msg = "<div>Unable to submit your request</div>";
             }
     }
+    header("location:submissionCompletionPage.php");
 }
 
 ?>
