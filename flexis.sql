@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 05, 2023 at 07:40 AM
+-- Generation Time: Mar 05, 2023 at 05:24 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -65,8 +65,8 @@ INSERT INTO `employee` (`employeeID`, `password`, `name`, `email`, `position`, `
 ('EM001', 'PS001', 'ONE', 'ONEgmail.com', 'Employee', 'New', 'DP001', 'EM009'),
 ('EM003', 'PS003', 'THREE', 'THREE@gmail.com', 'Employee', 'OLD', 'DP001', 'EM009'),
 ('EM005', 'PS002', 'TWO', 'TWO@gmail.com', 'Employee', 'New', NULL, 'EM009'),
-('EM009', 'PS009', 'NINE', 'NINE@gmail.com', 'Supervisor', 'New', 'DP001', NULL),
-('EM101', 'PS101', 'ONEOONE', 'ONEOONE@gmail.com', 'HR Admin', 'New', NULL, NULL);
+('EM009', 'PS009', 'NINE', 'NINE@gmail.com', 'Supervisor', 'OLD', 'DP001', NULL),
+('EM101', 'PS101', 'ONEOONE', 'ONEOONE@gmail.com', 'HR Admin', 'OLD', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -75,7 +75,7 @@ INSERT INTO `employee` (`employeeID`, `password`, `name`, `email`, `position`, `
 --
 
 CREATE TABLE `fwa_rquest` (
-  `requestID` varchar(5) NOT NULL,
+  `requestID` int(11) NOT NULL,
   `requestDate` date NOT NULL,
   `workType` varchar(30) NOT NULL CHECK (`workType` in ('Flexi-hour','Work-from-home','Hybrid')),
   `description` varchar(255) NOT NULL,
