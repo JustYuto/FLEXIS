@@ -10,13 +10,6 @@ require_once('config.php');
 
 <body>
 
-<div>
-    <?php
-        
-
-    ?>
-</div>
-
     <div>
         <form action="submissionPage.php" method="post">
             <div class="container">
