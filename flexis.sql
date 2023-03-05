@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 05, 2023 at 09:07 AM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 7.4.30
+-- Generation Time: Mar 05, 2023 at 07:40 AM
+-- Server version: 10.4.13-MariaDB
+-- PHP Version: 7.4.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -38,8 +38,7 @@ CREATE TABLE `department` (
 --
 
 INSERT INTO `department` (`departmentID`, `deptName`, `employeeID`) VALUES
-('DP001', 'HUMAN RESOURCES', NULL),
-('DP002', 'SECURITY', NULL);
+('DP001', 'HUMAN RESOURCES', NULL);
 
 -- --------------------------------------------------------
 
@@ -52,7 +51,7 @@ CREATE TABLE `employee` (
   `password` varchar(30) NOT NULL,
   `name` varchar(30) NOT NULL,
   `email` varchar(30) NOT NULL,
-  `position` varchar(20) NOT NULL,
+  `position` varchar(20) NOT NULL CHECK (`position` in ('Employee','Supervisor','HR Admin')),
   `FWAStatus` varchar(15) NOT NULL,
   `departmentID` varchar(5) DEFAULT NULL,
   `supervisorID` varchar(5) DEFAULT NULL
@@ -63,9 +62,10 @@ CREATE TABLE `employee` (
 --
 
 INSERT INTO `employee` (`employeeID`, `password`, `name`, `email`, `position`, `FWAStatus`, `departmentID`, `supervisorID`) VALUES
-('EM001', 'PS001', 'ONE', 'ONE@gmail.com', 'Employee', 'New', 'DP001', 'EM009'),
-('EM002', 'PS002', 'TWO', 'TWO@gmail.com', 'Employee', 'New', 'DP001', 'EM009'),
-('EM009', 'PS003', 'THREE', 'THREE@gmail.com', 'Supervisor', 'New', 'DP001', NULL),
+('EM001', 'PS001', 'ONE', 'ONEgmail.com', 'Employee', 'New', 'DP001', 'EM009'),
+('EM003', 'PS003', 'THREE', 'THREE@gmail.com', 'Employee', 'OLD', 'DP001', 'EM009'),
+('EM005', 'PS002', 'TWO', 'TWO@gmail.com', 'Employee', 'New', NULL, 'EM009'),
+('EM009', 'PS009', 'NINE', 'NINE@gmail.com', 'Supervisor', 'New', 'DP001', NULL),
 ('EM101', 'PS101', 'ONEOONE', 'ONEOONE@gmail.com', 'HR Admin', 'New', NULL, NULL);
 
 -- --------------------------------------------------------
@@ -90,7 +90,7 @@ CREATE TABLE `fwa_rquest` (
 --
 
 INSERT INTO `fwa_rquest` (`requestID`, `requestDate`, `workType`, `description`, `reason`, `status`, `comment`, `employeeID`) VALUES
-('RQ001', '2023-03-05', 'Work-from-home', 'Can it be changed?', 'Not well', 'Pending', NULL, 'EM001');
+(1, '2023-03-04', 'Hybrid', 'Nothing to report', 'No Reason, just want to change to work form home', 'Pending', NULL, 'EM001');
 
 --
 -- Indexes for dumped tables
@@ -119,6 +119,16 @@ ALTER TABLE `fwa_rquest`
   ADD KEY `FWA_Rqu_FK` (`employeeID`);
 
 --
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `fwa_rquest`
+--
+ALTER TABLE `fwa_rquest`
+  MODIFY `requestID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- Constraints for dumped tables
 --
 
@@ -132,7 +142,7 @@ ALTER TABLE `department`
 -- Constraints for table `employee`
 --
 ALTER TABLE `employee`
-  ADD CONSTRAINT `EMP_FK1` FOREIGN KEY (`supervisorID`) REFERENCES `employee` (`employeeID`) ON DELETE CASCADE,
+  ADD CONSTRAINT `EMP_FK1` FOREIGN KEY (`supervisorID`) REFERENCES `employee` (`employeeID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `EMP_FK2` FOREIGN KEY (`departmentID`) REFERENCES `department` (`departmentID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
