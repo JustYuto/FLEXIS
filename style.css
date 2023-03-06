@@ -1,52 +1,87 @@
+body {
+  font-family: 'Hiragino Kaku Gothic Pro', 'Meiryo', sans-serif;
+}
+
 .container {
     max-width: 600px;
     margin: 0 auto;
     text-align: center;
-  }
-  
-  h1 {
+
+}
+
+.form{
+  width: 100%;
+  margin:0 auto;
+  border: 1px solid #9c9c9c;
+  padding: 50px;
+  box-sizing: border-box;
+}
+
+h1 {
     font-size: 2.5rem;
     margin-top: 2rem;
     margin-bottom: 1.5rem;
     text-align: center;
-  }
+}
   
-  label {
+label {
     display: block;
     margin-top: 1.5rem;
     
-  }
-  
-  select,
-  textarea {
-    width: 100%;
-    padding: 0.5rem;
-    margin-top: 0.5rem;
-    margin-bottom: 1.5rem;
-    border: 1px solid #ccc;
-    border-radius: 0.3rem;
-    font-size: 1rem;
-  }
-  
-  .button-group {
-    margin-top: 1.5rem;
-    text-align: center;
-  }
-  
-  input[type="submit"],
-  input[type="reset"] {
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 0.3rem;
-    background-color: #000000;
-    color: white;
-    font-size: 1rem;
-    cursor: pointer;
-    margin-right: 1rem;
-  }
-  
-  input[type="reset"] {
-    background-color: #f44336;
-  }
+}
+
+table {
+  border-collapse:  collapse; 
+}
+
+tr:nth-child(odd) {
+  background-color:  #ddd; 
+}
+
+th,td {
+  padding: 5px 10px;
+}
 
   
+select,
+textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.3rem;
+  font-size: 1rem;
+}
+
+.button-group {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+input[type="submit"],
+input[type="reset"] {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.3rem;
+  background-color: #000000;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+
+input[type="reset"] {
+  background-color: #f44336;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"]{
+  width: 500px;
+  margin-top: 10px;
+  padding: 15px;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
