@@ -64,7 +64,7 @@ include_once('config.php')
                 $position = $_POST['position'];
                 $FWAStatus = $_POST['FWAStatus'];
             
-                $sql = "INSERT INTO fwa_rquest(departmentID, employeeID, supervisorID, password, name, email, position, FWAStatus) VALUES($departmentID, $employeeID, $supervisorID, $password, $name, $email, $position, $FWAStatus)";
+                $sql = "INSERT INTO employee(departmentID, employeeID, supervisorID, password, name, email, position, FWAStatus) VALUES($departmentID, $employeeID, $supervisorID, $password, $name, $email, $position, $FWAStatus)";
                 mysqli_query($conn,$sql);
                 
                 header("location:recordCompletionPage.php");
