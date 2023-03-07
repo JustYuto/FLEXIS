@@ -9,9 +9,11 @@
 <html>
     <head>
         <title></title>
+        <link rel="stylesheet" href="style.css">
+
     </head>
 
-    <body>
+    <body class="container">
         <h1>Welcome to the Employee Page</h1>
         <form action="employeeHome.php" method="post">
         <input type="submit" name="submission" value="Submit FWA Request">

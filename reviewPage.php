@@ -7,24 +7,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+    <title>FWA Request List Page</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="container">
     <h1>FWA List</h1>
     <br>
     <table>
-       <thead>
-          <tr>
-                <th>Employee ID</th>
-                <th>Request ID</th>
-                <th>Request Date</th>
-                <th>Work Type</th>
-                <th>Description</th>
-                <th>Reason</th>
-                <th>Status</th>
-          </tr>
-      </thead>
-      <tbody>
+    <tbody>
+        <tr>
+            <th>Employee ID</th>
+            <th>Request ID</th>
+            <th>Request Date</th>
+            <th>Work Type</th>
+            <th>Description</th>
+            <th>Reason</th>
+            <th>Status</th>
+        </tr>
+        
         <?php
         require_once('config.php');
 
@@ -49,10 +49,10 @@
                     <a href='acceptReq.php'>Accept</a>
                     <a href='rejectReq.php'>Reject</a>
                 </td>
-          </tr>";
+            </tr>";
         }
-          ?>
-      </tbody>
+        ?>
+    </tbody>
     </table>
     <form action="reviewPage.php" method="post">
         <input type="submit" name="home" value="home">

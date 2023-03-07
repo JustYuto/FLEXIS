@@ -9,9 +9,11 @@
 <html>
     <head>
         <title></title>
+        <link rel="stylesheet" href="style.css">
+
     </head>
 
-    <body>
+    <body class="container">
 
         <h1>Thank you for your submission!</h1>
         <form action="submissionCompletionPage.php" method="post">

@@ -6,9 +6,11 @@ include_once('config.php')
 <html>
     <head>
         <title></title>
+        <link rel="stylesheet" href="style.css">
+
     </head>
 
-    <body>
+    <body class="container">
     <form action="selectDeptPage.php" method="post">
             <div class="container">
                 <h1>New Employee Recording Page</h1>

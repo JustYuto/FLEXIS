@@ -8,12 +8,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title></title>
+        <title>HR admin Home Page</title>
+        <link rel="stylesheet" href="style.css">
     </head>
 
-    <body>
-        <h1>Welcome to the Supervisor Page</h1>
+    <body class="container">
+        <h1>Welcome to the HR admin Page</h1>
         <form action="hrAdminHome.php" method="post">
-        <input type="submit" name="record" value="Record New Employee">
+        <input id = submit type="submit" name="record" value="Record New Employee">
 </body>
 </html>
