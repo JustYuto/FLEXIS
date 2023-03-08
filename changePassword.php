@@ -8,7 +8,7 @@
 	<body>
 		<div class="_container"> 
 			<h1>Change Password</h1>
-			<?php
+			<!-- <?php
 			// Check if the EmployeeID parameter is set
 			if (isset($_GET["EmployeeID"])) {
 				$EmployeeID = $_GET["EmployeeID"];
@@ -16,9 +16,9 @@
 			} else {
 				echo "<form action='changePassword.php' method='post'>";
 			}
-			?>
+			?> -->
 			<div class="center">
-			<form action="changePassword.php">
+			<form action="changePassword.php" method="post">
 				<label for="current-password">Current Password:</label><br>
 				<input type="password" name="current-password" id="current-password">
 				<br>
@@ -28,7 +28,7 @@
 				<label for="confirm-new-password">Confirm New Password:</label>
 				<div class="button-group">  
 					<input type="password" name="confirm-new-password" id="confirm-new-password"><br><br>
-					<input type="submit" value="Change Password"><br>
+					<input type="submit" name="changePassword" value="Change Password"><br>
 				</div>
 			</form>
 			</div>
@@ -38,15 +38,8 @@
 </html>
 
 <?php
-$dbhost = "localhost";
-$dbuser = "root";
-$dbpass = "";
-$dbname = "FlexIS";
-
-$conn = mysqli_connect($dbhost,$dbuser,$dbpass,$dbname);
-if($conn===FALSE)
-{
-	die("Connection error");
+if (isset($_POST['changePassword'])){
+    header("location:employeeHome.php");
 }
 
 ?>
