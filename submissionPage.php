@@ -1,36 +1,25 @@
 <?php
 session_start();
 require_once("head.php");
-include('conn.php');
-//if($_SESSION(['is_login'])){
-    //$employeeID = $_SESSION['employeeID'];
-//}
-//else{
-    //echo "<script> location.href'LoginPage.php'</script>";
-//}
-//echo "EmployeeID: ".$_GET['EmployeeID'];
+include('config.php');
+// if($_SESSION(['is_login'])){
+//     $employeeID = $_SESSION['employeeID'];
+// }
+// else{
+//     echo "<script> location.href'LoginPage.php'</script>";
+// }
+// echo "EmployeeID: ".$_GET['EmployeeID'];
 if(isset($_REQUEST['submit'])){
-    
-    if(($_REQUEST['workType'] == "") || ($_REQUEST['description'] =="") || ($_REQUEST['reason'] =="")){
-        $msg = "<div>Please fill in all field</div>";
-    }
-    else{
-        $wType = $_REQUEST['workType'];
-        $des = $_REQUEST['description'];
-        $res = $_REQUEST['reason'];
-        $sql = "INSERT INTO fwa_rquest(workType, description, reason)VALUE('$wType','$des','$res')";
-            if($conn -> query($sql) == TRUE){
-                $msg = "<div>Request Submmited Sucessfully</div>";
-                
+    if (isset($_REQUEST['create'])){$workType = $_REQUEST['workType'];
+            $description = $_REQUEST['description'];
+            $reason = $_REQUEST['reason'];
+            $sql = "INSERT INTO fwa_rquest(workType, description, reason) VALUES($workType, $description, $reason)";
+            mysqli_query($conn,$sql);
             }
-            else{
-                $msg = "<div>Unable to submit your request</div>";
-            }
-    }
     header("location:submissionCompletionPage.php");
 }
-
 ?>
+
 <!DOCTYPE html>
 <html>
 <?php include 'Component/head.php'; ?>
@@ -52,7 +41,7 @@ if(isset($_REQUEST['submit'])){
                 <textarea type="text" name="reason" placeholder="Write your reason here" rows="4" cols="50" required></textarea><br>
             <div class="button-group">  
                 <input type="submit" name="submit" value = "Submit"> 
-                <input type="submit" formaction="http://localhost/mine_assigment/employeeHome.php" value="cancel">
+                <input type="submit" formaction="submissionCompletionPage.php" value="cancel">
             </div>  
         </form>
         </div>

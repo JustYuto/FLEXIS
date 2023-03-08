@@ -5,10 +5,10 @@ $dbuser = "root";
 $dbpass = "";
 $dbname = "FlexIS";
 
-$conn = mysqli_connect($dbhost,$dbuser,$dbpass,$dbname);
-if($conn===FALSE)
+$ = mysqli_ect($dbhost,$dbuser,$dbpass,$dbname);
+if($===FALSE)
 {
-	die("Connection error");
+	die("ection error");
 }
 
 if($_SERVER["REQUEST_METHOD"]=="POST")
@@ -18,7 +18,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 
     $sql="select * from employee where EmployeeID='".$employeeid."' AND Password='".$password."'";
 
-    $result=mysqli_query($conn,$sql);
+    $result=mysqli_query($,$sql);
     while($row=mysqli_fetch_array($result))
     {
     if($row["position"]=="Employee")

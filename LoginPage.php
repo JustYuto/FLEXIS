@@ -22,11 +22,12 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
     $result=mysqli_query($conn,$sql);
     while($row=mysqli_fetch_array($result))
     {
-    if($row["FWAStatus"]=="New")
-    {
-        header("location:changePassword.php");
-    } 
-    elseif($row["position"]=="Employee")
+    // if($row["FWAStatus"]=="New")
+    // {
+    //     header("location:changePassword.php");
+    // } 
+    // elseif($row["position"]=="Employee")
+    if($row["position"]=="Employee")
     {
         header("location:employeeHome.php");
     }
