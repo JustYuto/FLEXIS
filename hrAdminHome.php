@@ -8,14 +8,14 @@
     ?>
 <!DOCTYPE html>
 <html>
-
-<body>
     <?php include 'Component/head.php'; ?>
     <?php include 'Component/header.php'; ?>
+<body>
+
     <div class="container">
         <h1>Welcome to the HR admin Page</h1>
         <form action="hrAdminHome.php" method="post">
-        <input id = submit type="submit" name="record" value="Record New Employee">
+        <input class="btn btn-secondary" type="submit" name="record" value="Record New Employee">
     </div>
     
     

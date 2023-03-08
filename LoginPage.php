@@ -51,27 +51,41 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Login Page</title>
-        <link rel="stylesheet" href="style.css">
+        <?php include 'Component/head.php'; ?>
     </head>
 <body>
-<div class="container">
-    <h1>WELCOME TO FLEXIWORK</h1>
-    <div class="center">
-    <form action="#" method="POST">
-        <div>
-            <label>Employee ID</label>
-            <input type="text" name="EmployeeID" required>
-        </div><br>
-
-        <div>
-            <label>Password</label>
-            <input type="password" name="Password" required>
-        </div><br>
-            <input type="submit" value="Login">
-    
-    </form>
+    <div class="container">
+        <h1>WELCOME TO FLEXIWORK</h1>
+        <form class="text-center" action="#" method="POST">
+        <div class="card-body">
+            <p class="card-text">            
+                <input class="form-control" type="text" name="EmployeeID" placeholder="EmployeeID" required>
+            </p>
+            <p class="card-text">            
+                <input class="form-control" type="password" name="Password" placeholder="Password" required>
+            </p>
+            <p class="card-text">
+                <input class="btn btn-secondary" type="submit" value="Login">
+            </p>
+        </div>        
+        </form>
     </div>
-</div>
+    
 </body>
+
+<style>
+/* body {
+	height: 100%;
+	margin: 0 auto;
+	padding: 0;
+	display: table;
+}
+form {
+	min-height: 100%;
+	margin: 0 auto;
+	padding: 0;
+	display: table-cell;
+	vertical-align: middle;
+} */
+</style>
 </html>

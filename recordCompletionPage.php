@@ -7,12 +7,9 @@
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <title></title>
-        <link rel="stylesheet" href="style.css">
-
-    </head>
-
+    <?php include 'Component/head.php'; ?>
+    <?php include 'Component/header.php'; ?>
+    
     <body class="container">
         <h1>Employee created!</h1>
         <form action="recordCompletionPage.php" method="post">

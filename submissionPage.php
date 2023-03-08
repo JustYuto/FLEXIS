@@ -33,12 +33,11 @@ if(isset($_REQUEST['submit'])){
 ?>
 <!DOCTYPE html>
 <html>
-<head>
-<link rel="stylesheet" href="style.css">
-</head>
+<?php include 'Component/head.php'; ?>
+<?php include 'Component/header.php'; ?>
 <body>
-    <div class="container">
-        <h1>Submit FWA REQUEST</h1>
+    <h1>Submit FWA REQUEST</h1>
+    <div class="container">     
         <div class="center">
         <form action ="submissionPage.php" method = "POST">
             <label for="workType">Work Type: </label>

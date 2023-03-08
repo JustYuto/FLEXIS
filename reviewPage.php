@@ -6,56 +6,56 @@
     ?>
 <!DOCTYPE html>
 <html>
-<head>
-    <title>FWA Request List Page</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body class="container">
+    <?php include 'Component/head.php'; ?>
+    <?php include 'Component/header.php'; ?>
+
+<body>
     <h1>FWA List</h1>
-    <br>
-    <table>
-    <tbody>
-        <tr>
-            <th>Employee ID</th>
-            <th>Request ID</th>
-            <th>Request Date</th>
-            <th>Work Type</th>
-            <th>Description</th>
-            <th>Reason</th>
-            <th>Status</th>
-        </tr>
-        
-        <?php
-        require_once('config.php');
+    <div class="container-fluid">
+        <table class="table">
+        <tbody>
+            <tr>
+                <th scope="col">Employee ID</th>
+                <th scope="col">Request ID</th>
+                <th scope="col">Request Date</th>
+                <th scope="col">Work Type</th>
+                <th scope="col">Description</th>
+                <th scope="col">Reason</th>
+                <th scope="col">Status</th>
+            </tr>
+            
+            <?php
+            require_once('config.php');
 
-        $sql =  "SELECT * FROM fwa_rquest WHERE Status = 'Pending';";
-        $result = $conn->query($sql);
+            $sql =  "SELECT * FROM fwa_rquest WHERE Status = 'Pending';";
+            $result = $conn->query($sql);
 
-        if (!$result) {
-            die("Invalid query: " . $conn->error);
-        }
+            if (!$result) {
+                die("Invalid query: " . $conn->error);
+            }
 
-        while($row = $result -> fetch_assoc()){
-            echo
-            "<tr>
-                <td>".$row["employeeID"]."</td>
-                <td>".$row["requestID"]."</td>
-                <td>".$row["requestDate"]."</td>
-                <td>".$row["workType"]."</td>
-                <td>".$row["description"]."</td>
-                <td>".$row["reason"]."</td>
-                <td>".$row["status"]."</td>
-                <td>
-                    <a href='acceptReq.php'>Accept</a>
-                    <a href='rejectReq.php'>Reject</a>
-                </td>
-            </tr>";
-        }
-        ?>
-    </tbody>
-    </table>
-    <form action="reviewPage.php" method="post">
-        <input type="submit" name="home" value="home">
+            while($row = $result -> fetch_assoc()){
+                echo
+                "<tr>
+                    <td>".$row["employeeID"]."</td>
+                    <td>".$row["requestID"]."</td>
+                    <td>".$row["requestDate"]."</td>
+                    <td>".$row["workType"]."</td>
+                    <td>".$row["description"]."</td>
+                    <td>".$row["reason"]."</td>
+                    <td>".$row["status"]."</td>
+                    <td>
+                        <a href='acceptReq.php'>Accept</a>
+                        <a href='rejectReq.php'>Reject</a>
+                    </td>
+                </tr>";
+            }
+            ?>
+        </tbody>
+        </table>
+        <form action="reviewPage.php" method="post">
+            <input type="submit" name="home" value="home">
+        </div>
 </body>
 </html>
 
