@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once("head.php");
-include('conn.php');
+include('config.php');
 //if($_SESSION(['is_login'])){
     //$employeeID = $_SESSION['employeeID'];
 //}

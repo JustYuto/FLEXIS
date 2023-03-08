@@ -7,7 +7,7 @@
                 <a class="nav-link" href="#">HOME</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">LOG OUT</a>
+                <a class="nav-link" href="loginPage.php">LOG OUT</a>
             </li>
         </div>
     </nav>
