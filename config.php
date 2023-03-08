@@ -3,7 +3,7 @@
 $dbhost = "localhost";
 $dbuser = "root";
 $dbpass = "";
-$dbname = "FlexIS";
+$dbname = "flexis";
 
 $conn = mysqli_connect($dbhost,$dbuser,$dbpass,$dbname);
 if($conn->connect_error){
