@@ -6,7 +6,7 @@ $dbpass = "";
 $dbname = "FlexIS";
 
 $conn = mysqli_connect($dbhost,$dbuser,$dbpass,$dbname);
-if($conn->connect_error){
+if($conn===FALSE){
     die("Connection error:". $conn-> connect_error);
 }
 
