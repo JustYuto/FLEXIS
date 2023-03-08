@@ -27,6 +27,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
     //     header("location:changePassword.php");
     // } 
     // elseif($row["position"]=="Employee")
+    
     if($row["position"]=="Employee")
     {
         header("location:employeeHome.php");

@@ -13,6 +13,10 @@ if($conn===FALSE)
 	die("Connection error");
 }
 
+if (isset($_POST['changePassword'])){
+    header("location:employeeHome.php");
+}
+
 ?>
 	<?php include 'Component/head.php'; ?>
 	<?php include 'Component/header.php'; ?>
@@ -32,7 +36,7 @@ if($conn===FALSE)
 				echo "<form action='changePassword.php' method='post'>";
 			}
 			?>
-			<form class="text-center" action="changePassword.php">
+			<form class="text-center" action="changePassword.php" method="post">
 				<label for="current-password">Current Password:</label><br>
 				<input class="form-control" type="password" name="current-password" id="current-password">
 				<br>
@@ -42,7 +46,7 @@ if($conn===FALSE)
 				<label for="confirm-new-password">Confirm New Password:</label>
 				<div class="button-group">  
 					<input class="form-control" type="password" name="confirm-new-password" id="confirm-new-password"><br><br>
-					<input type="submit" value="Change Password"><br>
+					<input type="submit" name="changePassword" value="Change Password"><br>
 				</div>
 			</form>
 		</div>	
