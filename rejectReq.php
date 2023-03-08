@@ -15,16 +15,16 @@
 
 <!DOCTYPE html>
 <html>
-<head>
+    <?php include 'Component/head.php'; ?>
+    <?php include 'Component/header.php'; ?>
 
-</head>
-<body>
-    <h1>FWA Rejection Page</h1>
-    <form method="post">
-        <div>
-        <label for="comment"><b>Comment</b></label>
-                <input type="text" name="comment">
-                <form action="employeeHome.php" method="post">
-        <input type="submit" name="submission" value="Reject FWA Request">
-</body>
+    <body class="container">
+        <h1>FWA Rejection Page</h1>
+        <form method="post">
+            <div>
+            <label for="comment"><b>Comment</b></label>
+                    <input type="text" name="comment">
+                    <form action="employeeHome.php" method="post"><br><br>
+            <input type="submit" name="submission" value="Reject FWA Request">
+    </body>
 </html>

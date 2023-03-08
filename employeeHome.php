@@ -7,14 +7,16 @@
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <title></title>
-    </head>
-
+    <?php include 'Component/head.php'; ?>
+    <?php include 'Component/header.php'; ?>
     <body>
         <h1>Welcome to the Employee Page</h1>
-        <form action="employeeHome.php" method="post">
-        <input type="submit" name="submission" value="Submit FWA Request">
-    </form>
-</body>
+        <div class="container">
+            
+            <form action="employeeHome.php" method="post">
+                <input type="submit" name="submission" value="Submit FWA Request">
+            </form>        
+        </div>
+    </body>
+
 </html>

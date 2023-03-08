@@ -1,20 +1,19 @@
 <?php
         if (isset($_POST['review'])){
-            header("location:selectEmpPage.php");
+            header("location:reviewPage.php");
         }
-
     ?>
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <title></title>
-    </head>
-
+    <?php include 'Component/head.php'; ?>
+    <?php include 'Component/header.php'; ?>
     <body>
         <h1>Welcome to the Supervisor Page</h1>
-        <form action="supervisorHome.php" method="post">
-        <input type="submit" name="review" value="Review FWA Request">
-    </form>
-</body>
+        <div class="container">
+            <form action="supervisorHome.php" method="post">
+                <input class="btn btn-secondary" type="submit" name="review" value="Review FWA Request">
+            </form>
+        </div>
+    </body>
 </html>
