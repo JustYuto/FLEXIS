@@ -7,15 +7,15 @@
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Supervisor Home Page</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-
-    <body class="container">
+    <body>
+        <?php include 'Component/head.php'; ?>
+        <?php include 'Component/header.php'; ?>
+        
         <h1>Welcome to the Supervisor Page</h1>
-        <form action="supervisorHome.php" method="post">
-        <input type="submit" name="review" value="Review FWA Request">
-    </form>
-</body>
+        <div class="container">
+            <form action="supervisorHome.php" method="post">
+            <input type="submit" name="review" value="Review FWA Request">
+            </form>
+        </div>
+    </body>
 </html>

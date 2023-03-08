@@ -63,9 +63,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 
     <div>
         <input type="submit" value="Login">
-    </div>
-   
-    </form>
+    </div>   
+</form>
 
 </body>
 </html>
