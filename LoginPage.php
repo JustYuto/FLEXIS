@@ -5,6 +5,8 @@ $dbuser = "root";
 $dbpass = "";
 $dbname = "flexis";
 
+session_start();
+
 $conn = mysqli_connect($dbhost,$dbuser,$dbpass,$dbname);
 if($conn===FALSE)
 {
@@ -20,22 +22,26 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
     // Assume the user's account status is stored in a variable called $accountStatus
 
     $result=mysqli_query($conn,$sql);
-    while($row=mysqli_fetch_array($result))
-    {
+    $row=mysqli_fetch_array($result);
     if($row["FWAStatus"]=="New")
     {
+        $_SESSION["EmployeeID"]=$employeeid;
         header("location:changePassword.php");
     } 
     elseif($row["position"]=="Employee")
     {
+        $_SESSION["EmployeeID"]=$employeeid;
+
         header("location:employeeHome.php");
     }
     elseif($row["position"]=="Supervisor")
     {
+        $_SESSION["EmployeeID"]=$employeeid;
         header("location:supervisorHome.php");
     }
     elseif($row["position"]=="HR Admin")
     {
+        $_SESSION["EmployeeID"]=$employeeid;
         header("location:hrAdminHome.php");
     }
     else
@@ -43,7 +49,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
         echo "Invalid Employee ID or Password";
     }
 }
-}
+
 
 ?>
 
