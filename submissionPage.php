@@ -11,6 +11,7 @@ include('config.php');
 //echo "EmployeeID: ".$_GET['EmployeeID'];
 if(isset($_REQUEST['submit'])){
     
+    
     if(($_REQUEST['workType'] == "") || ($_REQUEST['description'] =="") || ($_REQUEST['reason'] =="")){
         $msg = "<div>Please fill in all field</div>";
     }
@@ -40,6 +41,7 @@ if(isset($_REQUEST['submit'])){
     <div class="container">     
         <div class="center">
         <form action ="submissionPage.php" method = "POST">
+            <label hidden for="employeeID"><?php echo $_SESSION["EmployeeID"] ?></label>
             <label for="workType">Work Type: </label>
             <select id="workType" name="workType">
                 <option value="Flexi-hour">Flexi-hour</option>
@@ -52,7 +54,7 @@ if(isset($_REQUEST['submit'])){
                 <textarea type="text" name="reason" placeholder="Write your reason here" rows="4" cols="50" required></textarea><br>
             <div class="button-group">  
                 <input type="submit" name="submit" value = "Submit"> 
-                <input type="submit" formaction="http://localhost/mine_assigment/employeeHome.php" value="cancel">
+                <input type="submit" formaction="http://localhost/flexis/FLEXIS/employeeHome.php" value="cancel">
             </div>  
         </form>
         </div>
