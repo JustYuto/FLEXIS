@@ -39,7 +39,7 @@
 
 <?php
 if (isset($_POST['changePassword'])){
-    header("location:employeeHome.php");
+    header("location:/flexis/FLEXIS/employeeHome.php");
 }
 
 ?>
