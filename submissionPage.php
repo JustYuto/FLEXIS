@@ -36,13 +36,6 @@ if(isset($_POST['cancel'])){
 <?php include 'Component/head.php'; ?>
 <?php include 'Component/header.php'; ?>
 <head>
-<script>
-    function setDate() {
-      var currentDate = new Date();
-      var formattedDate = (currentDate.getMonth() + 1) + "/" + currentDate.getDate() + "/" + currentDate.getFullYear();
-      document.getElementById("date").innerHTML = formattedDate;
-    }
-  </script>
 </head>
 <body onload="setDate()">
     <h1>Submit FWA REQUEST</h1>
@@ -50,7 +43,6 @@ if(isset($_POST['cancel'])){
         <div class="center">
         <form action ="" method = "POST">
             <textarea type="text" hidden for="status" name="status">Pending</textarea>
-            <div  for="requestDate " id="date"></div>
             <label for="workType">Work Type: </label>
             <select id="workType" name="workType">
                 <option value="Flexi-hour">Flexi-hour</option>
