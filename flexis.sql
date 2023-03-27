@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 05, 2023 at 05:24 PM
+-- Generation Time: Mar 27, 2023 at 05:42 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -76,13 +76,13 @@ INSERT INTO `employee` (`employeeID`, `password`, `name`, `email`, `position`, `
 
 CREATE TABLE `fwa_rquest` (
   `requestID` int(11) NOT NULL,
-  `requestDate` date NOT NULL,
+  `requestDate` datetime NOT NULL DEFAULT current_timestamp(),
   `workType` varchar(30) NOT NULL CHECK (`workType` in ('Flexi-hour','Work-from-home','Hybrid')),
   `description` varchar(255) NOT NULL,
   `reason` varchar(255) NOT NULL,
-  `status` varchar(20) NOT NULL CHECK (`status` in ('Rejected','Accepted','Pending')),
+  `status` varchar(20) NOT NULL,
   `comment` varchar(255) DEFAULT NULL,
-  `employeeID` varchar(5) DEFAULT NULL
+  `employeeID` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -90,7 +90,9 @@ CREATE TABLE `fwa_rquest` (
 --
 
 INSERT INTO `fwa_rquest` (`requestID`, `requestDate`, `workType`, `description`, `reason`, `status`, `comment`, `employeeID`) VALUES
-(1, '2023-03-04', 'Hybrid', 'Nothing to report', 'No Reason, just want to change to work form home', 'Pending', NULL, 'EM001');
+(1, '2023-03-04 00:00:00', 'Hybrid', 'Nothing to report', 'No Reason, just want to change to work form home', 'Pending', '', 'EM001'),
+(5, '2023-03-20 11:54:19', 'Flexi-hour', 'SSA', ' SAS', 'Pending', NULL, 'EM003'),
+(6, '2023-03-20 11:55:54', 'Flexi-hour', ' SM AJKNKSAN', ' BALBAL', 'Pending', NULL, 'EM003');
 
 --
 -- Indexes for dumped tables
@@ -126,7 +128,7 @@ ALTER TABLE `fwa_rquest`
 -- AUTO_INCREMENT for table `fwa_rquest`
 --
 ALTER TABLE `fwa_rquest`
-  MODIFY `requestID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `requestID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables
