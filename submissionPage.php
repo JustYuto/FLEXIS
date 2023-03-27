@@ -1,71 +1,73 @@
 <?php
-require_once('config.php');
+session_start();
+$dbhost = "localhost";
+$dbuser = "root";
+$dbpass = "";
+$dbname = "flexis";
+
+$conn = mysqli_connect($dbhost,$dbuser,$dbpass,$dbname);
+if($conn===FALSE){
+    die("Connection error:". $conn-> connect_error);    
+}
+if(isset($_POST['submit'])){
+    $workType = $_POST['workType'];
+    $description = $_POST['description'];
+    $reason = $_POST['reason'];
+    $status = $_POST['status'];
+    
+    if(empty($description || $reason)){
+        echo "<script>alert('Please fill in the desciption or reason')</script>";
+        header("location:submissionPage.php"); 
+    }
+
+    $sql = "INSERT INTO `fwa_rquest`
+            VALUES (NULL, current_timestamp(), '$workType', '$description', ' $reason', '$status', NULL , '".$_SESSION["EmployeeID"]."' )";
+    mysqli_query($conn,$sql);
+    header("location:submissionCompletionPage.php");       
+    
+}
+if(isset($_POST['cancel'])){
+    header("location:employeeHome.php");
+}
 
 ?>
 <!DOCTYPE html>
 <html>
-    <head>
-        <title></title>
-    </head>
-
-<body>
-
-    <div>
-        <form action="submissionPage.php" method="post">
-            <div class="container">
-                <h1>FWA Request Submission Page</h1>
-                <p>Please fill up the request</p>
-
-                <label for="employeeID"><b>Employee ID (EM***)</b></label>
-                <input type="text" name="employeeID" required>
-                </br>
-                </br>
-
-                <label for="requestID"><b>Request ID (RQ***)</b></label>
-                <input type="text" name="requestID" required>
-                </br>
-                </br>
-
-                <label for="requestDate"><b>Request Date (DD/MM/YYYY)</b></label>
-                <input type="date" name="requestDate" required>
-                </br>
-                </br>
-                <label for="workType"><b>Work Type</b></label>
-                <input type="text" name="workType" required>
-                </br>
-                </br>
-
-                <label for="description"><b>Description</b></label>
-                <input type="text" name="description" required>
-                </br>
-                </br>
-                <label for="reason"><b>Reason</b></label>
-                <input type="text" name="reason" required>
-                </br>
-                </br>
-                <input type="submit" name="create" value="Submit">
-            </div>
-            <?php
-            if (isset($_POST['create'])){
-
-                $requestID = $_POST['requestID'];
-                $requestDate = $_POST['requestDate'];
-                $workType = $_POST['workType'];
-                $description = $_POST['description'];
-                $reason = $_POST['reason'];
-                $status = "Pending";
-                $comment = NULL;
-                $employeeID = $_POST['employeeID'];
-            
-                $sql = "INSERT INTO fwa_rquest(requestID, requestDate, workType, description, reason, status, comment, employeeID) VALUES($requestID, $requestDate, $workType, $description, $reason, $status, $comment, $employeeID)";
-                mysqli_query($conn,$sql);
-                
-                header("location:submissionCompletionPage.php");
-            }
-            ?>
+<?php include 'Component/head.php'; ?>
+<?php include 'Component/header.php'; ?>
+<head>
+<script>
+    function setDate() {
+      var currentDate = new Date();
+      var formattedDate = (currentDate.getMonth() + 1) + "/" + currentDate.getDate() + "/" + currentDate.getFullYear();
+      document.getElementById("date").innerHTML = formattedDate;
+    }
+  </script>
+</head>
+<body onload="setDate()">
+    <h1>Submit FWA REQUEST</h1>
+    <div class="container">     
+        <div class="center">
+        <form action ="" method = "POST">
+            <textarea type="text" hidden for="status" name="status">Pending</textarea>
+            <div  for="requestDate " id="date"></div>
+            <label for="workType">Work Type: </label>
+            <select id="workType" name="workType">
+                <option value="Flexi-hour">Flexi-hour</option>
+                <option value="Work-from-home">Work-from-home</option>
+                <option value="Hybrid">Hybrid</option>
+            </select><br>
+            <label for="description">Description:</label>
+                <textarea type="text" name="description" placeholder="Write your description here" rows="4" cols="50" required></textarea><br>
+            <label>Reason:</label>
+                <textarea type="text" name="reason" placeholder="Write your reason here" rows="4" cols="50" required></textarea><br>
+            <div class="button-group">  
+                <input type="submit" name="submit" value = "Submit">
+                <input type="submit" name="cancel" value = "Cancel" formnovalidate>
+            </div>  
         </form>
-
+        </div>
     </div>
-
 </body>
 </html>
+
