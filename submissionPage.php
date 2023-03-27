@@ -1,34 +1,33 @@
 <?php
 session_start();
-require_once("head.php");
-include('config.php');
-//if($_SESSION(['is_login'])){
-    //$employeeID = $_SESSION['employeeID'];
-//}
-//else{
-    //echo "<script> location.href'LoginPage.php'</script>";
-//}
-//echo "EmployeeID: ".$_GET['EmployeeID'];
-if(isset($_REQUEST['submit'])){
+$dbhost = "localhost";
+$dbuser = "root";
+$dbpass = "";
+$dbname = "flexis";
+
+$conn = mysqli_connect($dbhost,$dbuser,$dbpass,$dbname);
+if($conn===FALSE){
+    die("Connection error:". $conn-> connect_error);    
+}
+if(isset($_POST['submit'])){
+    $workType = $_POST['workType'];
+    $description = $_POST['description'];
+    $reason = $_POST['reason'];
+    $status = $_POST['status'];
     
+    if(empty($description || $reason)){
+        echo "<script>alert('Please fill in the desciption or reason')</script>";
+        header("location:submissionPage.php"); 
+    }
+
+    $sql = "INSERT INTO `fwa_rquest`
+            VALUES (NULL, current_timestamp(), '$workType', '$description', ' $reason', '$status', NULL , '".$_SESSION["EmployeeID"]."' )";
+    mysqli_query($conn,$sql);
+    header("location:submissionCompletionPage.php");       
     
-    if(($_REQUEST['workType'] == "") || ($_REQUEST['description'] =="") || ($_REQUEST['reason'] =="")){
-        $msg = "<div>Please fill in all field</div>";
-    }
-    else{
-        $wType = $_REQUEST['workType'];
-        $des = $_REQUEST['description'];
-        $res = $_REQUEST['reason'];
-        $sql = "INSERT INTO fwa_rquest(workType, description, reason)VALUE('$wType','$des','$res')";
-            if($conn -> query($sql) == TRUE){
-                $msg = "<div>Request Submmited Sucessfully</div>";
-                
-            }
-            else{
-                $msg = "<div>Unable to submit your request</div>";
-            }
-    }
-    header("location:submissionCompletionPage.php");
+}
+if(isset($_POST['cancel'])){
+    header("location:employeeHome.php");
 }
 
 ?>
@@ -36,12 +35,22 @@ if(isset($_REQUEST['submit'])){
 <html>
 <?php include 'Component/head.php'; ?>
 <?php include 'Component/header.php'; ?>
-<body>
+<head>
+<script>
+    function setDate() {
+      var currentDate = new Date();
+      var formattedDate = (currentDate.getMonth() + 1) + "/" + currentDate.getDate() + "/" + currentDate.getFullYear();
+      document.getElementById("date").innerHTML = formattedDate;
+    }
+  </script>
+</head>
+<body onload="setDate()">
     <h1>Submit FWA REQUEST</h1>
     <div class="container">     
         <div class="center">
-        <form action ="submissionPage.php" method = "POST">
-            <label hidden for="employeeID"><?php echo $_SESSION["EmployeeID"] ?></label>
+        <form action ="" method = "POST">
+            <textarea type="text" hidden for="status" name="status">Pending</textarea>
+            <div  for="requestDate " id="date"></div>
             <label for="workType">Work Type: </label>
             <select id="workType" name="workType">
                 <option value="Flexi-hour">Flexi-hour</option>
@@ -53,8 +62,8 @@ if(isset($_REQUEST['submit'])){
             <label>Reason:</label>
                 <textarea type="text" name="reason" placeholder="Write your reason here" rows="4" cols="50" required></textarea><br>
             <div class="button-group">  
-                <input type="submit" name="submit" value = "Submit"> 
-                <input type="submit" formaction="http://localhost/flexis/FLEXIS/employeeHome.php" value="cancel">
+                <input type="submit" name="submit" value = "Submit">
+                <input type="submit" name="cancel" value = "Cancel" formnovalidate>
             </div>  
         </form>
         </div>
