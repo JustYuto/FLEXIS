@@ -9,6 +9,11 @@ $conn = mysqli_connect($dbhost,$dbuser,$dbpass,$dbname);
 if($conn===FALSE){
     die("Connection error:". $conn-> connect_error);    
 }
+
+if(!isset($_SESSION["EmployeeID"]))
+    {
+        header("location:LoginPage.php");
+    }
 if(isset($_POST['submit'])){
     $workType = $_POST['workType'];
     $description = $_POST['description'];
@@ -47,7 +52,7 @@ if(isset($_POST['cancel'])){
             <select id="workType" name="workType">
                 <option value="Flexi-hour">Flexi-hour</option>
                 <option value="Work-from-home">Work-from-home</option>
-                <option value="Hybrid">Hybrid</option>
+                <option value="Hybrid">Hybrid</option>  
             </select><br>
             <label for="description">Description:</label>
                 <textarea type="text" name="description" placeholder="Write your description here" rows="4" cols="50" required></textarea><br>
