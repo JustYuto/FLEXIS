@@ -1,8 +1,13 @@
 <?php
-        if (isset($_POST['review'])){
-            header("location:reviewPage.php");
-        }
-    ?>
+    session_start();
+    if(!isset($_SESSION["EmployeeID"]))
+    {
+        header("location:LoginPage.php");
+    }
+    if (isset($_POST['review'])){
+        header("location:reviewPage.php");
+    }
+?>
 
 <!DOCTYPE html>
 <html>

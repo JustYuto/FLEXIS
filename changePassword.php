@@ -42,7 +42,6 @@
 <!DOCTYPE html>
 <html>
 	<?php include 'Component/head.php'; ?>
-	<?php include 'Component/header.php'; ?>
 	<head>
 		<script type="text/javascript">
             function preventBack(){window.history.forward()};
