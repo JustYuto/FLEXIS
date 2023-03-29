@@ -2,14 +2,26 @@
 // $title = 'My Site Top';
 // $description = '説明（トップページ）';
 // $is_home = true; //トップページの判定用の変数
-        if (isset($_POST['record'])){
-            header("location:recordNewEmpPage.php");
-        }
-    ?>
+    session_start();
+    if(!isset($_SESSION["EmployeeID"]))
+    {
+        header("location:LoginPage.php");
+    }
+    if (isset($_POST['record'])){
+        header("location:recordNewEmpPage.php");
+    }
+?>
 <!DOCTYPE html>
 <html>
     <?php include 'Component/head.php'; ?>
     <?php include 'Component/header.php'; ?>
+<head>
+    <script type="text/javascript">
+        function preventBack(){window.history.forward()};
+        setTimeout("preventBack()",0);
+            window.onunload=function(){null;}
+    </script>
+</head>
 <body>
 
     <div class="container">

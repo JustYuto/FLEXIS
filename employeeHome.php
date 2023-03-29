@@ -23,7 +23,7 @@
         </script>
     </head>
     <body>
-        <h1>Welcome <?php echo $_SESSION["EmployeeID"]?> to the Employee Page</h1>
+        <h1>Welcome to the Employee Page</h1>
         <div class="container">
             
             <form action="employeeHome.php" method="post">
