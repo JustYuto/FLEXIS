@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Mar 27, 2023 at 05:42 AM
--- Server version: 10.4.13-MariaDB
--- PHP Version: 7.4.7
+-- Host: 127.0.0.1:3306
+-- Generation Time: Mar 30, 2023 at 05:51 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,6 +24,33 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `dailyschedule`
+--
+
+CREATE TABLE `dailyschedule` (
+  `dailyScheduleID` char(8) NOT NULL,
+  `dateWorked` date NOT NULL,
+  `workLocation` varchar(20) NOT NULL,
+  `workhour` int(11) NOT NULL,
+  `workReport` varchar(4000) NOT NULL,
+  `supervisorComment` varchar(4000) DEFAULT NULL,
+  `startHour` datetime NOT NULL,
+  `endHour` datetime NOT NULL,
+  `employeeID` char(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `dailyschedule`
+--
+
+INSERT INTO `dailyschedule` (`dailyScheduleID`, `dateWorked`, `workLocation`, `workhour`, `workReport`, `supervisorComment`, `startHour`, `endHour`, `employeeID`) VALUES
+('ds100002', '2022-03-01', 'Office', 4, 'I have had a physical meeting', 'ok', '2022-03-01 10:45:00', '2022-03-01 13:00:00', 'EM001'),
+('ds100003', '2020-12-01', 'Home', 10, 'I have worded on conding today but I have not done yet', 'Please keep working on it', '2020-12-01 08:00:00', '2020-12-01 19:00:00', 'EM003'),
+('ds100004', '2023-01-17', 'Office', 6, 'I have done to maintain DBMS', 'Thank you', '2023-01-17 12:00:00', '2023-01-17 18:00:00', 'EM005');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `department`
 --
 
@@ -31,7 +58,7 @@ CREATE TABLE `department` (
   `departmentID` varchar(5) NOT NULL,
   `deptName` varchar(20) NOT NULL,
   `employeeID` varchar(5) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `department`
@@ -55,7 +82,7 @@ CREATE TABLE `employee` (
   `FWAStatus` varchar(15) NOT NULL,
   `departmentID` varchar(5) DEFAULT NULL,
   `supervisorID` varchar(5) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `employee`
@@ -83,7 +110,7 @@ CREATE TABLE `fwa_rquest` (
   `status` varchar(20) NOT NULL,
   `comment` varchar(255) DEFAULT NULL,
   `employeeID` varchar(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `fwa_rquest`
@@ -92,11 +119,22 @@ CREATE TABLE `fwa_rquest` (
 INSERT INTO `fwa_rquest` (`requestID`, `requestDate`, `workType`, `description`, `reason`, `status`, `comment`, `employeeID`) VALUES
 (1, '2023-03-04 00:00:00', 'Hybrid', 'Nothing to report', 'No Reason, just want to change to work form home', 'Pending', '', 'EM001'),
 (5, '2023-03-20 11:54:19', 'Flexi-hour', 'SSA', ' SAS', 'Pending', NULL, 'EM003'),
-(6, '2023-03-20 11:55:54', 'Flexi-hour', ' SM AJKNKSAN', ' BALBAL', 'Pending', NULL, 'EM003');
+(6, '2023-03-20 11:55:54', 'Flexi-hour', ' SM AJKNKSAN', ' BALBAL', 'Pending', NULL, 'EM003'),
+(12, '2023-03-30 10:09:49', 'Flexi-hour', 'aa', ' aa', 'Pending', NULL, 'EM009'),
+(13, '2023-03-30 10:11:06', 'Flexi-hour', 'XXX', ' XXX', 'Pending', NULL, 'EM001'),
+(14, '2023-03-30 10:23:42', 'Flexi-hour', 'aa', ' aaaa', 'Pending', NULL, 'EM001'),
+(15, '2023-03-30 23:49:32', 'Flexi-hour', 'AA', ' AAA', 'Pending', NULL, 'EM001');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `dailyschedule`
+--
+ALTER TABLE `dailyschedule`
+  ADD PRIMARY KEY (`dailyScheduleID`),
+  ADD KEY `ds_FK` (`employeeID`);
 
 --
 -- Indexes for table `department`
@@ -128,11 +166,17 @@ ALTER TABLE `fwa_rquest`
 -- AUTO_INCREMENT for table `fwa_rquest`
 --
 ALTER TABLE `fwa_rquest`
-  MODIFY `requestID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `requestID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `dailyschedule`
+--
+ALTER TABLE `dailyschedule`
+  ADD CONSTRAINT `ds_FK` FOREIGN KEY (`employeeID`) REFERENCES `employee` (`employeeID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `department`
