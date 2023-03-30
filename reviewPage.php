@@ -1,4 +1,5 @@
 <?php
+    session_start();
         if (isset($_POST['home'])){
             header("location:supervisorHome.php");
         }

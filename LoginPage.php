@@ -29,24 +29,26 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
         header("location:changePassword.php");
     } 
     elseif($row["position"]=="Employee")
-    {
+    {   
         $_SESSION["EmployeeID"]=$employeeid;
-
+        $_SESSION["position"]="Employee";
         header("location:employeeHome.php");
     }
     elseif($row["position"]=="Supervisor")
     {
         $_SESSION["EmployeeID"]=$employeeid;
+        $_SESSION["position"]="Supervisor";
         header("location:supervisorHome.php");
     }
     elseif($row["position"]=="HR Admin")
     {
         $_SESSION["EmployeeID"]=$employeeid;
+        $_SESSION["position"]="HR Admin";
         header("location:hrAdminHome.php");
     }
     else
     {
-        echo "Invalid Employee ID or Password";
+        echo "<script>alert('Invalid employeeID/password');window.location.href = 'LoginPage.php';</script>";
     }
 }
 
@@ -58,6 +60,11 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 <html>
     <head>
         <?php include 'Component/head.php'; ?>
+        <script type="text/javascript">
+            function preventBack(){window.history.forward()};
+            setTimeout("preventBack()",0);
+                window.onunload=function(){null;}
+        </script>
     </head>
 <body>
     <div class="container">
