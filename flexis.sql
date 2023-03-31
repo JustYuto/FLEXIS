@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 27, 2023 at 05:42 AM
+-- Generation Time: Mar 31, 2023 at 08:49 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -24,6 +24,22 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `dailyschedule `
+--
+
+CREATE TABLE `dailyschedule ` (
+  `dsId` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `workLocation` varchar(20) NOT NULL,
+  `workHours` varchar(20) NOT NULL,
+  `workReport` varchar(225) NOT NULL,
+  `supervisorComments ` varchar(225) DEFAULT NULL,
+  `employeeID` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `department`
 --
 
@@ -38,7 +54,11 @@ CREATE TABLE `department` (
 --
 
 INSERT INTO `department` (`departmentID`, `deptName`, `employeeID`) VALUES
-('DP001', 'HUMAN RESOURCES', NULL);
+('DP001', 'HUMAN RESOURCES', 'EM101'),
+('DP002', 'IT Department', NULL),
+('DP003', 'Account Department', NULL),
+('DP004', 'Business Department', NULL),
+('DP005', 'Marketing Department', NULL);
 
 -- --------------------------------------------------------
 
@@ -62,11 +82,11 @@ CREATE TABLE `employee` (
 --
 
 INSERT INTO `employee` (`employeeID`, `password`, `name`, `email`, `position`, `FWAStatus`, `departmentID`, `supervisorID`) VALUES
-('EM001', 'PS001', 'ONE', 'ONEgmail.com', 'Employee', 'New', 'DP001', 'EM009'),
+('EM001', 'PP001', 'ONE', 'ONEgmail.com', 'Employee', 'New', 'DP001', 'EM009'),
 ('EM003', 'PS003', 'THREE', 'THREE@gmail.com', 'Employee', 'OLD', 'DP001', 'EM009'),
 ('EM005', 'PS002', 'TWO', 'TWO@gmail.com', 'Employee', 'New', NULL, 'EM009'),
 ('EM009', 'PS009', 'NINE', 'NINE@gmail.com', 'Supervisor', 'OLD', 'DP001', NULL),
-('EM101', 'PS101', 'ONEOONE', 'ONEOONE@gmail.com', 'HR Admin', 'OLD', NULL, NULL);
+('EM101', 'PS101', 'ONEOONE', 'ONEOONE@gmail.com', 'HR Admin', 'OLD', 'DP001', NULL);
 
 -- --------------------------------------------------------
 
@@ -90,13 +110,21 @@ CREATE TABLE `fwa_rquest` (
 --
 
 INSERT INTO `fwa_rquest` (`requestID`, `requestDate`, `workType`, `description`, `reason`, `status`, `comment`, `employeeID`) VALUES
-(1, '2023-03-04 00:00:00', 'Hybrid', 'Nothing to report', 'No Reason, just want to change to work form home', 'Pending', '', 'EM001'),
-(5, '2023-03-20 11:54:19', 'Flexi-hour', 'SSA', ' SAS', 'Pending', NULL, 'EM003'),
-(6, '2023-03-20 11:55:54', 'Flexi-hour', ' SM AJKNKSAN', ' BALBAL', 'Pending', NULL, 'EM003');
+(1, '2023-03-04 00:00:00', 'Hybrid', 'Nothing to report', 'No Reason, just want to change to work form home', 'Accepted', 'no comment', 'EM001'),
+(2, '2023-03-20 11:54:19', 'Flexi-hour', 'SSA', ' SAS', 'Accepted', NULL, 'EM003'),
+(6, '2023-03-30 16:24:56', 'Hybrid', 'Blablabla', 'sasa', 'Pending', '', 'EM001'),
+(15, '2023-03-30 16:38:03', 'Work-from-home', 'I need to work-from-home', ' I want to go back hometown', 'Pending', NULL, 'EM003');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `dailyschedule `
+--
+ALTER TABLE `dailyschedule `
+  ADD PRIMARY KEY (`dsId`),
+  ADD KEY `employeeID` (`employeeID`);
 
 --
 -- Indexes for table `department`
@@ -125,10 +153,16 @@ ALTER TABLE `fwa_rquest`
 --
 
 --
+-- AUTO_INCREMENT for table `dailyschedule `
+--
+ALTER TABLE `dailyschedule `
+  MODIFY `dsId` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `fwa_rquest`
 --
 ALTER TABLE `fwa_rquest`
-  MODIFY `requestID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `requestID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Constraints for dumped tables

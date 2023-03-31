@@ -20,7 +20,7 @@ if (isset($_POST['create'])) {
     
     if (empty($_POST['supervisorID'])) {
         $sql = "INSERT INTO employee 
-        VALUES ('$employeeID', '$password', '$name', '$email', '$position', 'OLD', '$departmentID', NULL)";
+        VALUES ('$employeeID', '$password', '$name', '$email', '$position', '$FWAStatus', '$departmentID', NULL)";
         $sql2 = "UPDATE department SET employeeID='$employeeID' WHERE departmentID='$departmentID'";
     } else {
         $sql = "INSERT INTO employee 
