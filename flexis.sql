@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Mar 30, 2023 at 05:51 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Host: 127.0.0.1
+-- Generation Time: Mar 31, 2023 at 08:49 AM
+-- Server version: 10.4.13-MariaDB
+-- PHP Version: 7.4.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,29 +24,18 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dailyschedule`
+-- Table structure for table `dailyschedule `
 --
 
-CREATE TABLE `dailyschedule` (
-  `dailyScheduleID` char(8) NOT NULL,
-  `dateWorked` date NOT NULL,
+CREATE TABLE `dailyschedule ` (
+  `dsId` int(11) NOT NULL,
+  `date` date NOT NULL,
   `workLocation` varchar(20) NOT NULL,
-  `workhour` int(11) NOT NULL,
-  `workReport` varchar(4000) NOT NULL,
-  `supervisorComment` varchar(4000) DEFAULT NULL,
-  `startHour` datetime NOT NULL,
-  `endHour` datetime NOT NULL,
-  `employeeID` char(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `dailyschedule`
---
-
-INSERT INTO `dailyschedule` (`dailyScheduleID`, `dateWorked`, `workLocation`, `workhour`, `workReport`, `supervisorComment`, `startHour`, `endHour`, `employeeID`) VALUES
-('ds100002', '2022-03-01', 'Office', 4, 'I have had a physical meeting', 'ok', '2022-03-01 10:45:00', '2022-03-01 13:00:00', 'EM001'),
-('ds100003', '2020-12-01', 'Home', 10, 'I have worded on conding today but I have not done yet', 'Please keep working on it', '2020-12-01 08:00:00', '2020-12-01 19:00:00', 'EM003'),
-('ds100004', '2023-01-17', 'Office', 6, 'I have done to maintain DBMS', 'Thank you', '2023-01-17 12:00:00', '2023-01-17 18:00:00', 'EM005');
+  `workHours` varchar(20) NOT NULL,
+  `workReport` varchar(225) NOT NULL,
+  `supervisorComments ` varchar(225) DEFAULT NULL,
+  `employeeID` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -58,14 +47,18 @@ CREATE TABLE `department` (
   `departmentID` varchar(5) NOT NULL,
   `deptName` varchar(20) NOT NULL,
   `employeeID` varchar(5) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `department`
 --
 
 INSERT INTO `department` (`departmentID`, `deptName`, `employeeID`) VALUES
-('DP001', 'HUMAN RESOURCES', NULL);
+('DP001', 'HUMAN RESOURCES', 'EM101'),
+('DP002', 'IT Department', NULL),
+('DP003', 'Account Department', NULL),
+('DP004', 'Business Department', NULL),
+('DP005', 'Marketing Department', NULL);
 
 -- --------------------------------------------------------
 
@@ -82,18 +75,18 @@ CREATE TABLE `employee` (
   `FWAStatus` varchar(15) NOT NULL,
   `departmentID` varchar(5) DEFAULT NULL,
   `supervisorID` varchar(5) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `employee`
 --
 
 INSERT INTO `employee` (`employeeID`, `password`, `name`, `email`, `position`, `FWAStatus`, `departmentID`, `supervisorID`) VALUES
-('EM001', 'PS001', 'ONE', 'ONEgmail.com', 'Employee', 'New', 'DP001', 'EM009'),
+('EM001', 'PP001', 'ONE', 'ONEgmail.com', 'Employee', 'New', 'DP001', 'EM009'),
 ('EM003', 'PS003', 'THREE', 'THREE@gmail.com', 'Employee', 'OLD', 'DP001', 'EM009'),
 ('EM005', 'PS002', 'TWO', 'TWO@gmail.com', 'Employee', 'New', NULL, 'EM009'),
 ('EM009', 'PS009', 'NINE', 'NINE@gmail.com', 'Supervisor', 'OLD', 'DP001', NULL),
-('EM101', 'PS101', 'ONEOONE', 'ONEOONE@gmail.com', 'HR Admin', 'OLD', NULL, NULL);
+('EM101', 'PS101', 'ONEOONE', 'ONEOONE@gmail.com', 'HR Admin', 'OLD', 'DP001', NULL);
 
 -- --------------------------------------------------------
 
@@ -110,31 +103,28 @@ CREATE TABLE `fwa_rquest` (
   `status` varchar(20) NOT NULL,
   `comment` varchar(255) DEFAULT NULL,
   `employeeID` varchar(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `fwa_rquest`
 --
 
 INSERT INTO `fwa_rquest` (`requestID`, `requestDate`, `workType`, `description`, `reason`, `status`, `comment`, `employeeID`) VALUES
-(1, '2023-03-04 00:00:00', 'Hybrid', 'Nothing to report', 'No Reason, just want to change to work form home', 'Pending', '', 'EM001'),
-(5, '2023-03-20 11:54:19', 'Flexi-hour', 'SSA', ' SAS', 'Pending', NULL, 'EM003'),
-(6, '2023-03-20 11:55:54', 'Flexi-hour', ' SM AJKNKSAN', ' BALBAL', 'Pending', NULL, 'EM003'),
-(12, '2023-03-30 10:09:49', 'Flexi-hour', 'aa', ' aa', 'Pending', NULL, 'EM009'),
-(13, '2023-03-30 10:11:06', 'Flexi-hour', 'XXX', ' XXX', 'Pending', NULL, 'EM001'),
-(14, '2023-03-30 10:23:42', 'Flexi-hour', 'aa', ' aaaa', 'Pending', NULL, 'EM001'),
-(15, '2023-03-30 23:49:32', 'Flexi-hour', 'AA', ' AAA', 'Pending', NULL, 'EM001');
+(1, '2023-03-04 00:00:00', 'Hybrid', 'Nothing to report', 'No Reason, just want to change to work form home', 'Accepted', 'no comment', 'EM001'),
+(2, '2023-03-20 11:54:19', 'Flexi-hour', 'SSA', ' SAS', 'Accepted', NULL, 'EM003'),
+(6, '2023-03-30 16:24:56', 'Hybrid', 'Blablabla', 'sasa', 'Pending', '', 'EM001'),
+(15, '2023-03-30 16:38:03', 'Work-from-home', 'I need to work-from-home', ' I want to go back hometown', 'Pending', NULL, 'EM003');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `dailyschedule`
+-- Indexes for table `dailyschedule `
 --
-ALTER TABLE `dailyschedule`
-  ADD PRIMARY KEY (`dailyScheduleID`),
-  ADD KEY `ds_FK` (`employeeID`);
+ALTER TABLE `dailyschedule `
+  ADD PRIMARY KEY (`dsId`),
+  ADD KEY `employeeID` (`employeeID`);
 
 --
 -- Indexes for table `department`
@@ -163,6 +153,12 @@ ALTER TABLE `fwa_rquest`
 --
 
 --
+-- AUTO_INCREMENT for table `dailyschedule `
+--
+ALTER TABLE `dailyschedule `
+  MODIFY `dsId` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `fwa_rquest`
 --
 ALTER TABLE `fwa_rquest`
@@ -171,12 +167,6 @@ ALTER TABLE `fwa_rquest`
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `dailyschedule`
---
-ALTER TABLE `dailyschedule`
-  ADD CONSTRAINT `ds_FK` FOREIGN KEY (`employeeID`) REFERENCES `employee` (`employeeID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `department`
