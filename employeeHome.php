@@ -7,6 +7,12 @@
     if (isset($_POST['submission'])){
         header("location:submissionPage.php");
     }
+    if (isset($_POST['check'])){
+        header("location:submmitedFWARequest.php");
+    }
+    if (isset($_POST['update'])){
+        header("location:");
+    }
     ?>
 
 <!DOCTYPE html>
@@ -25,10 +31,11 @@
     <body>
         <h1>Welcome to the Employee Page</h1>
         <div class="container">
-            
             <form action="employeeHome.php" method="post">
                 <input type="submit" name="submission" value="Submit FWA Request">
-            </form>        
+                <input type="submit" name="check" value="Check FWA Request">
+                <input type="submit" name="update" value="Update Daily Schedule">
+            </form>       
         </div>
     </body>
 
