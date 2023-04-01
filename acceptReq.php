@@ -15,18 +15,23 @@
 
 <!DOCTYPE html>
 <html>
-<head>
-    <link rel="stylesheet" href="style.css">
+<?php include 'Component/head.php'; ?>
 
-</head>
-<body class="container">
-    <h1>FWA Acceptance Page</h1>
-    <form method="post">
-        <div>
-        <label for="comment"><b>Comment</b></label>
-                <input type="text" name="comment">
-                <form action="employeeHome.php" method="post"><br><br>
-        <input type="submit" name="submission" value="Accept FWA Request">
+<body>
+    <div class="header-container">
+        <?php include 'Component/header.php'; ?>
+    </div>
+    <div class="container-fluid">
+        <h1>FWA Acceptance Page</h1>
+        <form method="post">
+            <div class="form-group">
+                <label for="comment"><b>Comment</b></label>
+                <textarea class="form-control" name="comment" rows="5"></textarea>
+            </div>
+            <div class="container text-center">
+                <input class="btn btn-secondary" type="submit" name="submission" value="Accept FWA Request">
+            </div>
+    </div>
 </body>
-</html>
 
+</html>

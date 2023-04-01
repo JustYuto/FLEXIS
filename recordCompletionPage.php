@@ -13,30 +13,32 @@
 
 <!DOCTYPE html>
 <html>
-<<<<<<< HEAD
-<?php include 'Component/head.php'; ?>
-<?php include 'Component/header.php'; ?>
 
-<body class="container">
-    <h1>Employee created!</h1>
-    <form action="recordCompletionPage.php" method="post">
-=======
-    <head>
+<head>
     <script type="text/javascript">
-            function preventBack(){window.history.forward()};
-            setTimeout("preventBack()",0);
-                window.onunload=function(){null;}
+    function preventBack() {
+        window.history.forward()
+    };
+    setTimeout("preventBack()", 0);
+    window.onunload = function() {
+        null;
+    }
     </script>
-    </head>
-    <?php include 'Component/head.php'; ?>
-    <?php include 'Component/header.php'; ?>
-    
-    <body class="container">
+</head>
+<?php include 'Component/head.php'; ?>
+
+<body>
+    <div class="header-container">
+        <?php include 'Component/header.php'; ?>
+    </div>
+    <div class="container-fluid">
         <h1>Employee created!</h1>
-        <form action="recordCompletionPage.php" method="post">
->>>>>>> main
-        <input type="submit" name="home" value="Home">
-    </form>
+        <div class="container text-center">
+            <form action="recordCompletionPage.php" method="post">
+                <input class="btn btn-secondary" type="submit" name="home" value="Home">
+            </form>
+        </div>
+    </div>
 </body>
 
 </html>
