@@ -7,25 +7,25 @@
     ?>
 <!DOCTYPE html>
 <html>
-    <?php include 'Component/head.php'; ?>
-    <?php include 'Component/header.php'; ?>
+<?php include 'Component/head.php'; ?>
+<?php include 'Component/header.php'; ?>
 
 <body>
     <h1>FWA List</h1>
     <div class="container-fluid">
         <table class="table">
-        <tbody>
-            <tr>
-                <th scope="col">Employee ID</th>
-                <th scope="col">Request ID</th>
-                <th scope="col">Request Date</th>
-                <th scope="col">Work Type</th>
-                <th scope="col">Description</th>
-                <th scope="col">Reason</th>
-                <th scope="col">Status</th>
-            </tr>
-            
-            <?php
+            <tbody>
+                <tr>
+                    <th scope="col">Employee ID</th>
+                    <th scope="col">Request ID</th>
+                    <th scope="col">Request Date</th>
+                    <th scope="col">Work Type</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Reason</th>
+                    <th scope="col">Status</th>
+                </tr>
+
+                <?php
             require_once('config.php');
 
             $sql =  "SELECT * FROM fwa_rquest WHERE Status = 'Pending';";
@@ -52,11 +52,14 @@
                 </tr>";
             }
             ?>
-        </tbody>
+            </tbody>
         </table>
-        <form action="reviewPage.php" method="post">
-            <input type="submit" name="home" value="home">
+        <div class="container text-center">
+            <form action="reviewPage.php" method="post">
+                <input class="btn btn-secondary" type="submit" name="home" value="home">
         </div>
-</body>
-</html>
+    </div>
 
+</body>
+
+</html>
