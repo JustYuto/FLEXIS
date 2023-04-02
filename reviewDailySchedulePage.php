@@ -30,7 +30,7 @@
                 <?php
             require_once('config.php');
 
-            $sql =  "SELECT * FROM dailySchedule";
+            $sql =  "SELECT * FROM dailyschedule";
             $result = $conn->query($sql);
 
             if (!$result) {
@@ -40,12 +40,12 @@
             while($row = $result -> fetch_assoc()){
                 echo
                 "<tr>
-                    <td>".$row["dailyScheduleID"]."</td>
-                    <td>".$row["dateWorked"]."</td>
+                    <td>".$row["dsId"]."</td>
+                    <td>".$row["date"]."</td>
                     <td>".$row["workLocation"]."</td>
-                    <td>".$row["workhour"]."</td>
+                    <td>".$row["workHours"]."</td>
                     <td>".$row["workReport"]."</td>
-                    <td>".$row["supervisorComment"]."</td>
+                    <td>".$row["supervisorComments"]."</td>
                     <td>".$row["employeeID"]."</td>
                 </tr>";
             }
