@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 02, 2023 at 11:46 AM
+-- Generation Time: Apr 02, 2023 at 04:01 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `dailyschedule` (
   `dsId` int(11) NOT NULL,
   `date` date NOT NULL DEFAULT current_timestamp(),
-  `workLocation` varchar(20) NOT NULL,
+  `workLocation` varchar(30) NOT NULL,
   `workHours` varchar(20) NOT NULL,
   `workReport` varchar(225) NOT NULL,
   `supervisorComments` varchar(225) DEFAULT NULL,
@@ -43,7 +43,7 @@ CREATE TABLE `dailyschedule` (
 
 INSERT INTO `dailyschedule` (`dsId`, `date`, `workLocation`, `workHours`, `workReport`, `supervisorComments`, `employeeID`) VALUES
 (1, '2023-03-01', 'Office (Flexi hours)', '8:00 a.m. - 4:00 p.m', '', NULL, 'EM001'),
-(2, '2023-03-01', 'Home (Work from home', '9:00 a.m. - 5:00 p.m', '', NULL, 'EM003');
+(2, '2023-03-01', 'Home (Work from home)', '9:00 a.m. - 5:00 p.m', '', NULL, 'EM003');
 
 -- --------------------------------------------------------
 
@@ -89,7 +89,7 @@ CREATE TABLE `employee` (
 --
 
 INSERT INTO `employee` (`employeeID`, `password`, `name`, `email`, `position`, `FWAStatus`, `departmentID`, `supervisorID`) VALUES
-('EM001', 'EM001', 'ONE', 'ONEgmail.com', 'Employee', 'New', 'DP001', 'EM009'),
+('EM001', 'EM001', 'ONE', 'ONEgmail.com', 'Employee', 'Hybrid', 'DP001', 'EM009'),
 ('EM003', 'PS003', 'THREE', 'THREE@gmail.com', 'Employee', 'OLD', 'DP001', 'EM009'),
 ('EM005', 'PS002', 'TWO', 'TWO@gmail.com', 'Employee', 'New', NULL, 'EM009'),
 ('EM006', 'EM006', 'jack', 'jack@gmail.com', 'Employee', 'Flexi-hour', 'DP001', 'EM009'),
@@ -124,7 +124,7 @@ INSERT INTO `fwa_rquest` (`requestID`, `requestDate`, `workType`, `description`,
 (1, '2023-03-04', 'Hybrid', 'Nothing to report', 'No Reason, just want to change to work form home', 'Accepted', 'no comment', 'EM001'),
 (2, '2023-03-20', 'Flexi-hour', 'SSA', ' SAS', 'Accepted', NULL, 'EM003'),
 (3, '2023-03-04', 'Flexi-hour', 'das', 'sasas', 'Accepted', 'SAS', 'EM006'),
-(6, '2023-03-30', 'Hybrid', 'Blablabla', 'sasa', 'Pending', '', 'EM001'),
+(6, '2023-03-30', 'Hybrid', 'Blablabla', 'sasa', 'Pending', 'SAS', 'EM001'),
 (15, '2023-03-30', 'Work-from-home', 'I need to work-from-home', ' I want to go back hometown', 'Pending', NULL, 'EM003');
 
 --
