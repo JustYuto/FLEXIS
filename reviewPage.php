@@ -23,6 +23,7 @@
                     <th scope="col">Description</th>
                     <th scope="col">Reason</th>
                     <th scope="col">Status</th>
+                    <th scope="col">Request</th>
                 </tr>
 
                 <?php
@@ -46,8 +47,8 @@
                     <td>".$row["reason"]."</td>
                     <td>".$row["status"]."</td>
                     <td>
-                        <a href='acceptReq.php'>Accept</a>
-                        <a href='rejectReq.php'>Reject</a>
+                        <button class=btn btn-primary><a href='acceptReq.php?reqID=".$row["requestID"]."&empID=".$row["employeeID"]."&workType=".$row["workType"]."'>Accept</a></button>
+                        <button class=btn btn-primary><a href='rejectReq.php?reqID=".$row["requestID"]."&empID=".$row["employeeID"]."'>Reject</a></button>
                     </td>
                 </tr>";
             }

@@ -1,15 +1,28 @@
 <?php
-    if (isset($_POST['submission'])){
-        include_once('config.php');
-        $comment = $_POST['comment'];
-        $status = "Rejected";
-        $query = "UPDATE 'fwa_rquest' SET 'comment'='".$comment."','status'='".$status."'";
-        
-        $result = mysqli_query($conn,$query);
-        
-        header("location:reviewPage.php");
-    }
-?>
+session_start();
+$dbhost = "localhost";
+$dbuser = "root";
+$dbpass = "";
+$dbname = "flexis";
+
+$conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
+if (!$conn) {
+    die("Connection error: " . mysqli_connect_error());
+}
+$id=$_GET['reqID'];
+        if (isset($_POST['submission'])){
+            $comment = $_POST['comment'];
+            $status = "Rejected";
+            $sql = "UPDATE fwa_rquest 
+            SET comment = '$comment', status = '$status'
+            WHERE requestID = '$id'";
+            
+            $result = mysqli_query($conn,$sql);
+            
+            header("location:reviewPage.php");
+        }
+
+    ?>
 
 <!DOCTYPE html>
 <html>
