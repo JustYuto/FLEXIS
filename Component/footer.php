@@ -2,5 +2,5 @@
   <div class="container">
     <p><small>&copy;Copyright</small></p>
   </div>
-</footer>
+</footer> 
 <script src="js/main.js"></script>

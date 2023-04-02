@@ -14,6 +14,7 @@
 <html>
 <?php include 'Component/head.php'; ?>
 <?php include 'Component/header.php'; ?>
+
 <head>
     <script type="text/javascript">
     function preventBack() {
@@ -27,25 +28,24 @@
 </head>
 
 <body>
-    <h1>Your FWA Request</h1>
+    <h1>Your Daily Schedules</h1>
     <div class="container-fluid">
         <table class="table">
         <tbody>
                 <tr>
                     <th scope="col">Employee ID</th>
-                    <th scope="col">Request ID</th>
-                    <th scope="col">Request Date</th>
-                    <th scope="col">Work Type</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Reason</th>
-                    <th scope="col">Status</th>
+                    <th scope="col">DailySchedule ID</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Work Location</th>
+                    <th scope="col">Work Hour</th>
+                    <th scope="col">Work Report</th>
                     <th scope="col">Supervisor comments</th>
                 </tr>
 
                 <?php
             require_once('config.php');
             $employee_id = $_SESSION["EmployeeID"];
-            $sql =  "SELECT * FROM fwa_rquest WHERE employeeID = '$employee_id'";
+            $sql =  "SELECT * FROM dailyschedule WHERE employeeID = '$employee_id'";
             $result = $conn->query($sql);
 
             if (!$result) {
@@ -56,22 +56,20 @@
                 echo
                 "<tr>
                     <td>".$row["employeeID"]."</td>
-                    <td>".$row["requestID"]."</td>
-                    <td>".$row["requestDate"]."</td>
-                    <td>".$row["workType"]."</td>
-                    <td>".$row["description"]."</td>
-                    <td>".$row["reason"]."</td>
-                    <td>".$row["status"]."</td>
-                    <td>".$row["comment"]."</td>
+                    <td>".$row["dsId"]."</td>
+                    <td>".$row["date"]."</td>
+                    <td>".$row["workLocation"]."</td>
+                    <td>".$row["workHours"]."</td>
+                    <td>".$row["workReport"]."</td>
+                    <td>".$row["supervisorComments"]."</td>
                 </tr>";
             }
             ?>
             </tbody>
         </table>
         <div class="container text-center">
-            <form action="submmitedFWARequest.php" method="post">
-                <input class="btn btn-secondary" type="submit" name="home" value="Home" formnovalidate>
-            </form>
+            <form action="" method="post">
+                <input class="btn btn-secondary" type="submit" name="home" value="home">
         </div>
     </div>
 </body>

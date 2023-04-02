@@ -1,7 +1,4 @@
 <?php
-// $title = 'My Site Top';
-// $description = '説明（トップページ）';
-// $is_home = true; //トップページの判定用の変数
     session_start();
     if(!isset($_SESSION["EmployeeID"]))
     {

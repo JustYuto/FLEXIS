@@ -3,8 +3,8 @@
         if (isset($_POST['home'])){
             header("location:supervisorHome.php");
         }
-
     ?>
+<!DOCTYPE html>
 <!DOCTYPE html>
 <html>
 <?php include 'Component/head.php'; ?>

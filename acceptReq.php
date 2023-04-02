@@ -1,17 +1,9 @@
 <?php
 session_start();
-$dbhost = "localhost";
-$dbuser = "root";
-$dbpass = "";
-$dbname = "flexis";
-
-$conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
-if (!$conn) {
-    die("Connection error: " . mysqli_connect_error());
-}
-$id=$_GET['reqID'];
-$id2=$_GET['empID'];
-$id3=$_GET['workType'];
+include_once('config.php');
+            $id=$_GET['reqID'];
+            $id2=$_GET['empID'];
+            $id3=$_GET['workType'];
         if (isset($_POST['submission'])){
             $comment = $_POST['comment'];
             $status = "Accepted";
@@ -27,7 +19,7 @@ $id3=$_GET['workType'];
             
             header("location:reviewPage.php");
         }
-
+        
     ?>
 
 <!DOCTYPE html>

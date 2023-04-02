@@ -11,7 +11,10 @@
         header("location:submmitedFWARequest.php");
     }
     if (isset($_POST['update'])){
-        header("location:");
+        header("location:updatePage.php");
+    }
+    if (isset($_POST['check2'])){
+        header("location:submittedDailySchedule.php");
     }
     ?>
 
@@ -50,6 +53,10 @@
                     </div>
                     <div class="form-group">
                         <input type="submit" name="update" value="Update Daily Schedule"
+                            class="btn btn-secondary form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" name="check2" value="Check Daily Schedule"
                             class="btn btn-secondary form-control">
                     </div>
                 </form>
