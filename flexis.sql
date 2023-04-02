@@ -27,13 +27,13 @@ SET time_zone = "+00:00";
 -- Table structure for table `dailyschedule `
 --
 
-CREATE TABLE `dailyschedule ` (
+CREATE TABLE `dailyschedule` (
   `dsId` int(11) NOT NULL,
   `date` date NOT NULL,
   `workLocation` varchar(20) NOT NULL,
   `workHours` varchar(20) NOT NULL,
   `workReport` varchar(225) NOT NULL,
-  `supervisorComments ` varchar(225) DEFAULT NULL,
+  `supervisorComments` varchar(225) DEFAULT NULL,
   `employeeID` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -122,7 +122,7 @@ INSERT INTO `fwa_rquest` (`requestID`, `requestDate`, `workType`, `description`,
 --
 -- Indexes for table `dailyschedule `
 --
-ALTER TABLE `dailyschedule `
+ALTER TABLE `dailyschedule`
   ADD PRIMARY KEY (`dsId`),
   ADD KEY `employeeID` (`employeeID`);
 
@@ -155,7 +155,7 @@ ALTER TABLE `fwa_rquest`
 --
 -- AUTO_INCREMENT for table `dailyschedule `
 --
-ALTER TABLE `dailyschedule `
+ALTER TABLE `dailyschedule`
   MODIFY `dsId` int(11) NOT NULL AUTO_INCREMENT;
 
 --
