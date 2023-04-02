@@ -24,7 +24,7 @@
                 <label><b>The number of department employees of each FWA status: </b></label>
                 <tr style="border: 2px solid black;">
                     <th style="border: 2px solid black;" scope="col">Department</th>
-                    <th style="border: 2px solid black;" scope="col">Flexi hours</th>
+                    <th style="border: 2px solid black;" scope="col">Flexi-hour</th>
                     <th style="border: 2px solid black;" scope="col">Work from home</th>
                     <th style="border: 2px solid black;" scope="col">Hybrid</th>
                 </tr>
@@ -33,7 +33,7 @@
                 require_once('config.php');
                 $count = 0;
                 $sql =  "SELECT d.deptName, 
-                            COUNT(CASE WHEN e.FWAStatus = 'Flexi hours' THEN 1 ELSE NULL END) AS 'Flexi hours', 
+                            COUNT(CASE WHEN e.FWAStatus = 'Flexi-hour' THEN 1 ELSE NULL END) AS 'Flexi-hour', 
                             COUNT(CASE WHEN e.FWAStatus = 'Work from home' THEN 1 ELSE NULL END) AS 'Work from home', 
                             COUNT(CASE WHEN e.FWAStatus = 'Hybrid' THEN 1 ELSE NULL END) AS 'Hybrid' 
                         FROM employee e 
@@ -50,7 +50,7 @@
                     echo
                         "<tr style='border: 2px solid black;'>
                             <td style='border: 2px solid black;'>".$row["deptName"]."</td>
-                            <td style='border: 2px solid black;'>".$row["Flexi hours"]."</td>
+                            <td style='border: 2px solid black;'>".$row["Flexi-hour"]."</td>
                             <td style='border: 2px solid black;'>".$row["Work from home"]."</td>
                             <td style='border: 2px solid black;'>".$row["Hybrid"]."</td>
                         </tr>";
