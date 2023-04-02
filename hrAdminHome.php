@@ -10,6 +10,9 @@
     if (isset($_POST['record'])){
         header("location:recordNewEmpPage.php");
     }
+    if (isset($_POST['viewFWAAnalytics'])){
+        header("location:viewFWAAnalytics.php");
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -28,6 +31,7 @@
         <h1>Welcome to the HR admin Page</h1>
         <form action="hrAdminHome.php" method="post">
         <input class="btn btn-secondary" type="submit" name="record" value="Record New Employee">
+        <input class="btn btn-secondary" type="submit" name="viewFWAAnalytics" value="View FWA Analytics">
     </div>
     
     

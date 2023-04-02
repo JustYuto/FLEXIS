@@ -10,12 +10,21 @@
     if (isset($_POST['reviewDailySchedule'])){
         header("location:reviewDailySchedulePage.php");
     }
+    if (isset($_POST['viewFWAAnalytics'])){
+        header("location:supervisorViewFWAAnalytics.php");
+    }
 ?>
 
 <!DOCTYPE html>
 <html>
 <?php include 'Component/head.php'; ?>
-
+<head>
+    <script type="text/javascript">
+        function preventBack(){window.history.forward()};
+        setTimeout("preventBack()",0);
+            window.onunload=function(){null;}
+    </script>
+</head>
 <body>
     <div class="header-container">
         <?php include 'Component/header.php'; ?>
@@ -31,6 +40,10 @@
                     </div>
                     <div class="form-group">
                         <input type="submit" name="reviewDailySchedule" value="Review Daily Schedule"
+                            class="btn btn-secondary form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" name="viewFWAAnalytics" value="View FWA Analytics"
                             class="btn btn-secondary form-control">
                     </div>
                 </form>

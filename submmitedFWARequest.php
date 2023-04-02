@@ -68,8 +68,9 @@
             </tbody>
         </table>
         <div class="container text-center">
-            <form action="submittedFWARequest.php" method="post">
-                <input class="btn btn-secondary" type="submit" name="home" value="home">
+            <form action="submmitedFWARequest.php" method="post">
+                <input class="btn btn-secondary" type="submit" name="home" value="Home" formnovalidate>
+            </form>
         </div>
     </div>
 </body>
