@@ -35,6 +35,7 @@ CREATE TABLE `dailyschedule` (
   `workReport` varchar(225) NOT NULL,
   `supervisorComments` varchar(225) DEFAULT NULL,
   `employeeID` varchar(5) NOT NULL
+  `employeeID` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -169,6 +170,7 @@ ALTER TABLE `fwa_rquest`
 --
 ALTER TABLE `dailyschedule`
   MODIFY `dsId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `dsId` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `fwa_rquest`
