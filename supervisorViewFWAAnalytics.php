@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
     <?php include 'Component/head.php'; ?>
-    <?php include 'Component/header.php'; ?>
 <body>
 <div class="header-container">
     <?php include 'Component/header.php'; ?>
