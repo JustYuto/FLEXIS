@@ -74,7 +74,11 @@
                     }
 
                     while($row = $result->fetch_assoc()) {
-                        echo "<option value='" . $row['departmentID'] . "'>" . $row['deptName'] . "</option>";
+                        $selected = '';
+                        if (isset($_GET['departmentID']) && $_GET['departmentID'] == $row['departmentID']) {
+                            $selected = 'selected';
+                        }
+                        echo "<option value='" . $row['departmentID'] . "' " . $selected . ">" . $row['deptName'] . "</option>";
                     }
                     ?>
                 </select>
