@@ -80,7 +80,7 @@
                     ?>
                     </select>
                 </div>
-                <div class="col-form-label">
+                <div class="col-sm-10">
                     <button class="btn btn-primary mb-4" type="submit">Submit</button>
                 </div>
                 <br>
