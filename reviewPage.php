@@ -5,6 +5,7 @@
         }
     ?>
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <?php include 'Component/head.php'; ?>
 <?php include 'Component/header.php'; ?>
@@ -45,8 +46,8 @@
                     <td>".$row["reason"]."</td>
                     <td>".$row["status"]."</td>
                     <td>
-                        <a href='acceptReq.php'>Accept</a>
-                        <a href='rejectReq.php'>Reject</a>
+                        <button class=btn btn-primary><a href='acceptReq.php?reqID=".$row["requestID"]."&empID=".$row["employeeID"]."&workType=".$row["workType"]."'>Accept</a></button>
+                        <button class=btn btn-primary><a href='rejectReq.php?reqID=".$row["requestID"]."&empID=".$row["employeeID"]."'>Reject</a></button>
                     </td>
                 </tr>";
             }

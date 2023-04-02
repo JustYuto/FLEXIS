@@ -44,8 +44,8 @@
 
                 <?php
             require_once('config.php');
-
-            $sql =  "SELECT * FROM dailyschedule";
+            $employee_id = $_SESSION["EmployeeID"];
+            $sql =  "SELECT * FROM dailyschedule WHERE employeeID = '$employee_id'";
             $result = $conn->query($sql);
 
             if (!$result) {

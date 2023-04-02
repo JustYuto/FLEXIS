@@ -7,29 +7,27 @@
 <!DOCTYPE html>
 <html>
 <?php include 'Component/head.php'; ?>
+<?php include 'Component/header.php'; ?>
 
 <body>
-    <div class="header-container">
-        <?php include 'Component/header.php'; ?>
-    </div>
-    <h1>List of Daily Schedule</h1>
+    <h1>Daily Schedule List</h1>
     <div class="container-fluid">
         <table class="table">
             <tbody>
                 <tr>
+                    <th scope="col">Employee ID</th>
                     <th scope="col">DailySchedule ID</th>
                     <th scope="col">Date</th>
                     <th scope="col">Work Location</th>
                     <th scope="col">Work Hour</th>
                     <th scope="col">Work Report</th>
-                    <th scope="col">Supervisor Comment</th>
-                    <th scope="col">Employee ID</th>
+                    <th scope="col">Add Comment?</th>
                 </tr>
 
                 <?php
             require_once('config.php');
 
-            $sql =  "SELECT * FROM dailySchedule";
+            $sql =  "SELECT * FROM dailyschedule";
             $result = $conn->query($sql);
 
             if (!$result) {
@@ -39,13 +37,15 @@
             while($row = $result -> fetch_assoc()){
                 echo
                 "<tr>
-                    <td>".$row["dailyScheduleID"]."</td>
-                    <td>".$row["dateWorked"]."</td>
-                    <td>".$row["workLocation"]."</td>
-                    <td>".$row["workhour"]."</td>
-                    <td>".$row["workReport"]."</td>
-                    <td>".$row["supervisorComment"]."</td>
                     <td>".$row["employeeID"]."</td>
+                    <td>".$row["dsId"]."</td>
+                    <td>".$row["date"]."</td>
+                    <td>".$row["workLocation"]."</td>
+                    <td>".$row["workHours"]."</td>
+                    <td>".$row["workReport"]."</td>
+                    <td>
+                    <button class=btn btn-primary><a href='addComment.php?DSID=".$row["dsId"]."'>Comment</a></button>
+                    </td>
                 </tr>";
             }
             ?>

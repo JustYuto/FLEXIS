@@ -1,14 +1,25 @@
 <?php
+session_start();
+include_once('config.php');
+            $id=$_GET['reqID'];
+            $id2=$_GET['empID'];
+            $id3=$_GET['workType'];
         if (isset($_POST['submission'])){
-            include_once('config.php');
             $comment = $_POST['comment'];
             $status = "Accepted";
-            $query = "UPDATE 'fwa_rquest' SET 'comment'='".$comment."','status'='".$status."'";
+            $workType = $id3;
+            $sql = "UPDATE fwa_rquest
+            SET comment = '$comment', status = '$status'
+            WHERE requestID = '$id';
+            UPDATE employee 
+            SET FWAStatus='$workType'
+            WHERE employeeID = '$id2'";
             
-            $result = mysqli_query($conn,$query);
+            mysqli_multi_query($conn, $sql);
             
             header("location:reviewPage.php");
         }
+        
     ?>
 
 <!DOCTYPE html>
