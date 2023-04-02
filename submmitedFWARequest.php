@@ -30,7 +30,7 @@
     <h1>Your FWA Request</h1>
     <div class="container-fluid">
         <table class="table">
-            <tbody>
+        <tbody>
                 <tr>
                     <th scope="col">Employee ID</th>
                     <th scope="col">Request ID</th>
@@ -39,6 +39,7 @@
                     <th scope="col">Description</th>
                     <th scope="col">Reason</th>
                     <th scope="col">Status</th>
+                    <th scope="col">Supervisor comments</th>
                 </tr>
 
                 <?php
@@ -61,6 +62,7 @@
                     <td>".$row["description"]."</td>
                     <td>".$row["reason"]."</td>
                     <td>".$row["status"]."</td>
+                    <td>".$row["comment"]."</td>
                 </tr>";
             }
             ?>

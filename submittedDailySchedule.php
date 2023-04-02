@@ -28,7 +28,7 @@
 </head>
 
 <body>
-    <h1>Your FWA Request</h1>
+    <h1>Your Daily Schedules</h1>
     <div class="container-fluid">
         <table class="table">
         <tbody>
