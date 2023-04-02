@@ -30,7 +30,6 @@
     }
     </script>
 </head>
-
 <body>
     <div class="header-container">
         <?php include 'Component/header.php'; ?>

@@ -16,7 +16,6 @@ if (isset($_POST['create'])) {
     $email = $_POST['email'];
     $position = $_POST['position'];
     $FWAStatus = 'New';
-
     
     if (empty($_POST['supervisorID'])) {
         $sql = "INSERT INTO employee 

@@ -17,7 +17,6 @@
                     <th style="border: 2px solid black;" scope="col">Work from home</th>
                     <th style="border: 2px solid black;" scope="col">Hybrid</th>
                 </tr>
-
                 <?php
                 require_once('config.php');
                 $count = 0;

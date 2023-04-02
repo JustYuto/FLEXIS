@@ -5,7 +5,7 @@
         header("location:LoginPage.php");
     }
 ?>
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html>
     <?php include 'Component/head.php'; ?>
     <?php include 'Component/header.php'; ?>

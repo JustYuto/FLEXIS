@@ -3,7 +3,6 @@
         if (isset($_POST['home'])){
             header("location:supervisorHome.php");
         }
-
     ?>
 <!DOCTYPE html>
 <html>

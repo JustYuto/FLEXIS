@@ -14,7 +14,6 @@
         header("location:supervisorViewFWAAnalytics.php");
     }
 ?>
-
 <!DOCTYPE html>
 <html>
 <?php include 'Component/head.php'; ?>

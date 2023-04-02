@@ -15,7 +15,6 @@ if(isset($_POST['submit'])){
         echo "<script>alert('Please fill in the desciption or reason')</script>";
         header("location:submissionPage.php"); 
     }
-
     $sql = "INSERT INTO `fwa_rquest`
             VALUES (NULL, current_timestamp(), '$workType', '$description', ' $reason', '$status', NULL , '".$_SESSION["EmployeeID"]."' )";
     mysqli_query($conn,$sql);

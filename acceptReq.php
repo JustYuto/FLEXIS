@@ -1,5 +1,4 @@
 <?php
-
         if (isset($_POST['submission'])){
             include_once('config.php');
             $comment = $_POST['comment'];
@@ -10,7 +9,6 @@
             
             header("location:reviewPage.php");
         }
-
     ?>
 
 <!DOCTYPE html>

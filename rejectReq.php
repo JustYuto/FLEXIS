@@ -6,7 +6,7 @@
         $query = "UPDATE 'fwa_rquest' SET 'comment'='".$comment."','status'='".$status."'";
         
         $result = mysqli_query($conn,$query);
-        
+    
         header("location:reviewPage.php");
     }
 ?>

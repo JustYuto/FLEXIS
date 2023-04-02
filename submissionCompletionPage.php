@@ -8,7 +8,6 @@
 <html>
 <?php include 'Component/head.php'; ?>
 <?php include 'Component/header.php'; ?>
-
 <body class="container">
     <h1>Thank you for your submission!</h1>
     <div class="container text-center">
