@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 02, 2023 at 11:46 AM
+-- Generation Time: Apr 02, 2023 at 05:02 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -30,8 +30,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `dailyschedule` (
   `dsId` int(11) NOT NULL,
   `date` date NOT NULL DEFAULT current_timestamp(),
-  `workLocation` varchar(20) NOT NULL,
-  `workHours` varchar(20) NOT NULL,
+  `workLocation` varchar(30) NOT NULL,
+  `workHours` varchar(40) NOT NULL,
   `workReport` varchar(225) NOT NULL,
   `supervisorComments` varchar(225) DEFAULT NULL,
   `employeeID` varchar(5) NOT NULL
@@ -43,7 +43,8 @@ CREATE TABLE `dailyschedule` (
 
 INSERT INTO `dailyschedule` (`dsId`, `date`, `workLocation`, `workHours`, `workReport`, `supervisorComments`, `employeeID`) VALUES
 (1, '2023-03-01', 'Office (Flexi hours)', '8:00 a.m. - 4:00 p.m', '', NULL, 'EM001'),
-(2, '2023-03-01', 'Home (Work from home', '9:00 a.m. - 5:00 p.m', '', NULL, 'EM003');
+(2, '2023-03-01', 'Home (Work from home)', '9:00 a.m. - 5:00 p.m', '', NULL, 'EM003'),
+(3, '2023-04-02', 'Home (Hybrid)', '10:00 a.m. - 6:00 p.m.', '', NULL, 'EM012');
 
 -- --------------------------------------------------------
 
@@ -63,9 +64,10 @@ CREATE TABLE `department` (
 
 INSERT INTO `department` (`departmentID`, `deptName`, `employeeID`) VALUES
 ('DP001', 'HUMAN RESOURCES', 'EM101'),
+('DP002', 'IT Department', NULL),
 ('DP003', 'Account Department', NULL),
 ('DP004', 'Business Department', NULL),
-('DP005', 'Marketing Department', NULL);
+('DP005', 'Marketing Department', 'EM011');
 
 -- --------------------------------------------------------
 
@@ -89,13 +91,16 @@ CREATE TABLE `employee` (
 --
 
 INSERT INTO `employee` (`employeeID`, `password`, `name`, `email`, `position`, `FWAStatus`, `departmentID`, `supervisorID`) VALUES
-('EM001', 'EM001', 'ONE', 'ONEgmail.com', 'Employee', 'New', 'DP001', 'EM009'),
+('EM001', 'EM001', 'ONE', 'ONEgmail.com', 'Employee', 'Hybrid', 'DP001', 'EM009'),
 ('EM003', 'PS003', 'THREE', 'THREE@gmail.com', 'Employee', 'OLD', 'DP001', 'EM009'),
 ('EM005', 'PS002', 'TWO', 'TWO@gmail.com', 'Employee', 'New', NULL, 'EM009'),
 ('EM006', 'EM006', 'jack', 'jack@gmail.com', 'Employee', 'Flexi-hour', 'DP001', 'EM009'),
 ('EM007', 'EM007', 'andy', 'andy@gmail.com', 'Employee', 'Work from home', 'DP001', 'EM009'),
 ('EM008', 'EM008', 'winson', 'winson@gmail.com', 'Employee', 'Hybrid', 'DP001', 'EM009'),
 ('EM009', 'PS009', 'NINE', 'NINE@gmail.com', 'Supervisor', 'OLD', 'DP001', NULL),
+('EM010', 'EM010', 'GG', 'gg@gmail.com', 'Supervisor', 'New', 'DP003', NULL),
+('EM011', 'EM011', 'jane', 'jane@gmail.com', 'Supervisor', 'OLD', 'DP005', NULL),
+('EM012', 'EM012', 'YongJun', 'yj123@gmail.com', 'Employee', 'Work from home', 'DP005', 'EM011'),
 ('EM013', 'EM013', 'granne', 'granne@gmail.com', 'Employee', 'Work from home', 'DP001', 'EM009'),
 ('EM101', 'PS101', 'ONEOONE', 'ONEOONE@gmail.com', 'HR Admin', 'OLD', 'DP001', NULL);
 
@@ -124,8 +129,9 @@ INSERT INTO `fwa_rquest` (`requestID`, `requestDate`, `workType`, `description`,
 (1, '2023-03-04', 'Hybrid', 'Nothing to report', 'No Reason, just want to change to work form home', 'Accepted', 'no comment', 'EM001'),
 (2, '2023-03-20', 'Flexi-hour', 'SSA', ' SAS', 'Accepted', NULL, 'EM003'),
 (3, '2023-03-04', 'Flexi-hour', 'das', 'sasas', 'Accepted', 'SAS', 'EM006'),
-(6, '2023-03-30', 'Hybrid', 'Blablabla', 'sasa', 'Pending', '', 'EM001'),
-(15, '2023-03-30', 'Work-from-home', 'I need to work-from-home', ' I want to go back hometown', 'Pending', NULL, 'EM003');
+(4, '2023-03-30', 'Hybrid', 'Blablabla', 'sasa', 'Pending', 'SAS', 'EM001'),
+(5, '2023-03-30', 'Work-from-home', 'I need to work-from-home', ' I want to go back hometown', 'Pending', NULL, 'EM003'),
+(6, '2023-04-02', 'Work-from-home', 'I want to work from home', 'i have no transport', 'Accepted', 'Ok make sure u do ur task', 'EM012');
 
 --
 -- Indexes for dumped tables
@@ -168,7 +174,7 @@ ALTER TABLE `fwa_rquest`
 -- AUTO_INCREMENT for table `dailyschedule`
 --
 ALTER TABLE `dailyschedule`
-  MODIFY `dsId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `dsId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `fwa_rquest`
