@@ -8,4 +8,4 @@
 
     <title>FLEXIS WORK</title>
     <link rel="stylesheet" href="style.css">
-    </head>
+    </head> 

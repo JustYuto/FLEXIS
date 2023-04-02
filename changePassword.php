@@ -27,7 +27,7 @@
                 } else if ($position == "Employee") {
                     header("Location: employeeHome.php");
                 }
-    
+                
                 // Display a success message if the redirect didn't happen
                 echo "<script>alert('Password updated successfully!');</script>";
             } else {

@@ -8,7 +8,6 @@
     if (isset($_POST['home'])){
         header("location:hrAdminHome.php");
     }
-
 ?>
 
 <!DOCTYPE html>
