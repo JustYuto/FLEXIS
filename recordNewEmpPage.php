@@ -8,7 +8,6 @@ if(!isset($_SESSION["EmployeeID"]))
 
 if (isset($_POST['create'])) {
     $departmentID = $_POST['departmentID'];
-    $departmentName = $_POST['departmentName'];
     $employeeID = $_POST['employeeID'];
     $supervisorID = $_POST['supervisorID'];
     $password = $_POST['employeeID'];
@@ -21,13 +20,15 @@ if (isset($_POST['create'])) {
         $sql = "INSERT INTO employee 
         VALUES ('$employeeID', '$password', '$name', '$email', '$position', '$FWAStatus', '$departmentID', NULL)";
         $sql2 = "UPDATE department SET employeeID='$employeeID' WHERE departmentID='$departmentID'";
+        mysqli_query($conn, $sql);
+        mysqli_query($conn, $sql2);
     } else {
         $sql = "INSERT INTO employee 
         VALUES ('$employeeID', '$password', '$name', '$email', '$position', '$FWAStatus', '$departmentID', '$supervisorID')";
+                mysqli_query($conn, $sql);
     }
     
-    mysqli_query($conn, $sql);
-    mysqli_query($conn, $sql2);
+    
     
     header("Location: recordCompletionPage.php");
     exit();
