@@ -70,7 +70,7 @@
         <form method="POST" class="row">
             <div class="container">
                 <div>
-                    <select class="control-label form-control" name="departmentID id=" departmentID">
+                    <select class="control-label form-control" name="departmentID" id=" departmentID">
                         <?php
                         session_start();
                         require_once('config.php');
